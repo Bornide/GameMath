@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33103.184
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameMath.Core", "GameMath\GameMath.Core.csproj", "{B34ECCE4-A7F5-42E6-B724-BB486B8119D9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameMath.Tweening", "GameMath.Tweening\GameMath.Tweening.csproj", "{9889F63E-DB4C-4C1B-ACF4-601BC36586AD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B34ECCE4-A7F5-42E6-B724-BB486B8119D9} = {B34ECCE4-A7F5-42E6-B724-BB486B8119D9}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameMath.Timer", "GameMath.Timer\GameMath.Timer.csproj", "{C6C70ACE-8CC0-4C7B-8D48-623BE18B5744}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B34ECCE4-A7F5-42E6-B724-BB486B8119D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B34ECCE4-A7F5-42E6-B724-BB486B8119D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B34ECCE4-A7F5-42E6-B724-BB486B8119D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B34ECCE4-A7F5-42E6-B724-BB486B8119D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9889F63E-DB4C-4C1B-ACF4-601BC36586AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9889F63E-DB4C-4C1B-ACF4-601BC36586AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9889F63E-DB4C-4C1B-ACF4-601BC36586AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9889F63E-DB4C-4C1B-ACF4-601BC36586AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6C70ACE-8CC0-4C7B-8D48-623BE18B5744}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6C70ACE-8CC0-4C7B-8D48-623BE18B5744}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6C70ACE-8CC0-4C7B-8D48-623BE18B5744}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6C70ACE-8CC0-4C7B-8D48-623BE18B5744}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {059B4C79-5145-44C8-9745-68488E3D49EC}
+	EndGlobalSection
+EndGlobal
