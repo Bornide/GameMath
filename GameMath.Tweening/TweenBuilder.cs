@@ -17,5 +17,10 @@ namespace GameMath.Tweening
         {
             return new Cubic();
         }
+
+        public static IEase Elastic()
+        {
+            return new Elastic();
+        }
     }
 }

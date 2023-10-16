@@ -10,7 +10,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameMath.Tweening", "GameMa
 		{B34ECCE4-A7F5-42E6-B724-BB486B8119D9} = {B34ECCE4-A7F5-42E6-B724-BB486B8119D9}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameMath.Timer", "GameMath.Timer\GameMath.Timer.csproj", "{C6C70ACE-8CC0-4C7B-8D48-623BE18B5744}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameMath.Timer", "GameMath.Timer\GameMath.Timer.csproj", "{C6C70ACE-8CC0-4C7B-8D48-623BE18B5744}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameMath.Demo", "GameMath.Demo\GameMath.Demo.csproj", "{41CEF6D6-39C4-42BB-9C42-B133B9A68C00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +32,10 @@ Global
 		{C6C70ACE-8CC0-4C7B-8D48-623BE18B5744}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6C70ACE-8CC0-4C7B-8D48-623BE18B5744}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6C70ACE-8CC0-4C7B-8D48-623BE18B5744}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41CEF6D6-39C4-42BB-9C42-B133B9A68C00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41CEF6D6-39C4-42BB-9C42-B133B9A68C00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41CEF6D6-39C4-42BB-9C42-B133B9A68C00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41CEF6D6-39C4-42BB-9C42-B133B9A68C00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

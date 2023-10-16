@@ -6,5 +6,6 @@ namespace GameMath.Tweening
     {
         public abstract dynamic Interpolate(Quadratic tween, double currentDuration);
         public abstract dynamic Interpolate(Cubic tween, double currentDuration);
+        public abstract dynamic Interpolate(Elastic tween, double currentDuration);
     }
 }

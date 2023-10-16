@@ -13,5 +13,9 @@ namespace GameMath.Tweening
             throw new NotImplementedException();
         }
 
+        public override dynamic Interpolate(Elastic tween, double currentDuration)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
