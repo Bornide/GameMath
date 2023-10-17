@@ -15,7 +15,7 @@ namespace GameMath.Tweening
 
         public static IEase Cubic()
         {
-            return new Cubic();
+            return new Cubic(); 
         }
     }
 }
