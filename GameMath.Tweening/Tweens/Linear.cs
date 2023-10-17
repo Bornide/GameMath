@@ -1,12 +1,13 @@
-﻿
-namespace GameMath.Tweening
+﻿namespace GameMath.Tweening.Tweens
 {
-    class Linear : Tween
+    class Linear : Interpolation
     {
-        protected override dynamic Interpolate(double currentTime)
+        public Linear() : base() { }
+
+        public override dynamic Interpolate(Tween tween, double currentDuration)
         {
-            if (currentTime >= this.TotalDuration) OnAnimationEnded();
-            return (EndValue - StartValue) * (currentTime / TotalDuration) + StartValue;
+            //if (currentTime >= this.TotalDuration) OnAnimationEnded();
+            return (tween.EndValue - tween.StartValue) * (currentDuration / tween.TotalDuration) + tween.StartValue;
         }
     }
 }

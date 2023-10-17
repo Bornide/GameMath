@@ -1,14 +1,16 @@
-﻿namespace GameMath.Tweening
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace GameMath.Tweening
 {
     public interface ITween
     {
-        dynamic Update(double currentTime);
         void Start();
-        void Reverse();
         void Restart();
+        void Reverse();
         void Stop();
-
-        delegate void TweenEvent(ITween tween);
-        event TweenEvent AnimationEnded;
     }
 }

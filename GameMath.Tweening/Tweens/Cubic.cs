@@ -1,12 +1,11 @@
-﻿
-namespace GameMath.Tweening
+﻿namespace GameMath.Tweening.Tweens
 {
-    internal class Cubic : EasingTween
+    internal class Cubic : Interpolation
     {
-        protected override dynamic Interpolate(double currentTime)
+        public override dynamic Interpolate(Tween tween, double currentDuration)
         {
-            if (currentTime >= this.TotalDuration) OnAnimationEnded();
-            return Ease.Interpolate(this, currentTime);
+            //if (currentTime >= this.TotalDuration) OnAnimationEnded();
+            return EaseingFunction!.Interpolate(this, tween, currentDuration);
         }
     }
 }

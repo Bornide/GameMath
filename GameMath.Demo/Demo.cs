@@ -1,4 +1,6 @@
 ﻿using GameMath.Tweening;
+using GameMath.Tweening.Point;
+using GameMath.Tweening.Vector2D;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -12,9 +14,8 @@ namespace GameMath.Demo
         private Texture2D _rectangle;
         private double _linearX;
         private double _elasticX;
-        private ITween _linearTween;
-        private ITween _elasticTween;
-        IDrawable _rawable;
+        private ITweenPoint _linearTween;
+        private ITweenPoint _elasticTween;
 
         public Demo()
         {
@@ -22,13 +23,8 @@ namespace GameMath.Demo
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
-            _linearTween = TweenBuilder.Linear().From(100).To(500).For(1000f).Build();
-            _elasticTween = TweenBuilder.Elastic().EaseIn().From(100).To(500).For(1000f).Build();
-            _elasticTween.AnimationEnded += (tween) =>
-            {
-                //tween.Reverse();
-                tween.Restart();
-            };
+            _linearTween = TweenBuilder.From(100).To(600).For(1000f).Linear().Build();
+            _elasticTween = TweenBuilder.From(100).To(600).For(1000f).Elastic().EaseInOut().Build();
         }
 
         protected override void Initialize()

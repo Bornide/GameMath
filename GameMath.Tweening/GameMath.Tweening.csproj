@@ -10,4 +10,8 @@
     <ProjectReference Include="..\GameMath\GameMath.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Vectors\" />
+  </ItemGroup>
+
 </Project>
