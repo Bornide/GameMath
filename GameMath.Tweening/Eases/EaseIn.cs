@@ -16,10 +16,14 @@ namespace GameMath.Tweening
 
         public override dynamic Interpolate(Elastic tween, double currentDuration)
         {
-            double c = tween.TotalDuration / 2f;
-            double p = 1;
-            return -c * Math.Pow(2, 10 * (currentDuration / tween.TotalDuration - 1)) * 
-                Math.Sin((currentDuration/tween.TotalDuration - 1 - p / 4) * (2 * Math.PI) / p) + tween.StartValue;
+            double t = currentDuration / tween.TotalDuration;
+            double c1 = 1.70158;
+            double c2 = c1 * 1.525;
+            var elastic = t < 0.5
+              ? (Math.Pow(2 * t, 2) * ((c2 + 1) * 2 * t - c2)) / 2
+              : (Math.Pow(2 * t - 2, 2) * ((c2 + 1) * (t * 2 - 2) + c2) + 2) / 2;
+
+            return tween.StartValue + tween.EndValue * elastic;
         }
     }
 }

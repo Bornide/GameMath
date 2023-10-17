@@ -10,8 +10,10 @@ namespace GameMath.Demo
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private Texture2D _rectangle;
-        private double _rectangleX = 50;
-        private ITween _tween;
+        private double _linearX;
+        private double _elasticX;
+        private ITween _linearTween;
+        private ITween _elasticTween;
 
         public Demo()
         {
@@ -19,7 +21,8 @@ namespace GameMath.Demo
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
-            _tween = TweenBuilder.Quadratic().EaseIn().From(50).To(500).For(250f).Build();
+            _linearTween = TweenBuilder.Linear().From(100).To(500).For(1000f).Build();
+            _elasticTween = TweenBuilder.Elastic().EaseIn().From(100).To(500).For(1000f).Build();
         }
 
         protected override void Initialize()
@@ -40,9 +43,13 @@ namespace GameMath.Demo
                 Exit();
 
             if (Keyboard.GetState().IsKeyDown(Keys.Space))
-                _tween.Start();
+            {
+                _linearTween.Start();
+                _elasticTween.Start();
+            }
 
-            _rectangleX = _tween.Update(gameTime.ElapsedGameTime.Milliseconds);
+            _linearX = _linearTween.Update(gameTime.ElapsedGameTime.Milliseconds);
+            _elasticX = _elasticTween.Update(gameTime.ElapsedGameTime.Milliseconds);
 
             base.Update(gameTime);
         }
@@ -51,7 +58,8 @@ namespace GameMath.Demo
         {
             GraphicsDevice.Clear(new Color(20, 20, 20));
             _spriteBatch.Begin();
-            _spriteBatch.Draw(_rectangle, new Rectangle((int)_rectangleX, 50, 50, 50), Color.White);
+            _spriteBatch.Draw(_rectangle, new Rectangle((int)_linearX, 50, 50, 50), Color.White);
+            _spriteBatch.Draw(_rectangle, new Rectangle((int)_elasticX, 150, 50, 50), Color.White);
             _spriteBatch.End();
             base.Draw(gameTime);
         }
