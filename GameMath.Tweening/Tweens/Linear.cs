@@ -5,7 +5,8 @@ namespace GameMath.Tweening
     {
         protected override dynamic Interpolate(double currentTime)
         {
-            return EndValue * (currentTime / TotalDuration) + StartValue;
+            if (currentTime >= this.TotalDuration) OnAnimationEnded();
+            return (EndValue - StartValue) * (currentTime / TotalDuration) + StartValue;
         }
     }
 }

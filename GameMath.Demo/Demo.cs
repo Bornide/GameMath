@@ -14,6 +14,7 @@ namespace GameMath.Demo
         private double _elasticX;
         private ITween _linearTween;
         private ITween _elasticTween;
+        IDrawable _rawable;
 
         public Demo()
         {
@@ -23,6 +24,11 @@ namespace GameMath.Demo
 
             _linearTween = TweenBuilder.Linear().From(100).To(500).For(1000f).Build();
             _elasticTween = TweenBuilder.Elastic().EaseIn().From(100).To(500).For(1000f).Build();
+            _elasticTween.AnimationEnded += (tween) =>
+            {
+                //tween.Reverse();
+                tween.Restart();
+            };
         }
 
         protected override void Initialize()

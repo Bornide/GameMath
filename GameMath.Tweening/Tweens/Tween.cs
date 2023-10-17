@@ -16,6 +16,8 @@ namespace GameMath.Tweening
 
         private bool IsStarted;
 
+        public event ITween.TweenEvent AnimationEnded;
+
         public ITo From(dynamic startValue)
         {
             StartValue = startValue;
@@ -49,11 +51,29 @@ namespace GameMath.Tweening
             return Interpolate(CurrentDuration);
         }
 
+        protected void OnAnimationEnded()
+        {
+            AnimationEnded?.Invoke(this);
+        }
+
         protected abstract dynamic Interpolate(double currentTime);
 
         public void Start()
         {
             IsStarted = true;
+        }
+
+        public void Reverse()
+        {
+            var bufferValue = StartValue;
+            StartValue = EndValue;
+            EndValue = bufferValue;
+        }
+
+        public void Restart()
+        {
+            IsStarted = true;
+            CurrentDuration = 0;
         }
 
         public void Stop()

@@ -1,3 +1,2 @@
-﻿
-using var game = new GameMath.Demo.Demo();
+﻿using var game = new GameMath.Demo.Demo();
 game.Run();
