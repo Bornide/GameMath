@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace GameMath.Tweening.Tweens
 {
-    class FromVector2D : Tween, ITween2D, IFrom, ITo, IFor, IInterpolation, IEase, IBuild
+    class FromVector2D : Tween, ITweenVector2D, IFrom, ITo, IFor, IInterpolation, IEase, IBuild
     {
-        public Vector2D.Vector2D Update(double currentTime)
+        public Vectors.Vector2D Update(double currentTime)
         {
             if (!IsBuilded) throw new UnbuildException();
             if (!IsStarted) return StartValue!;
 
             CurrentDuration = Math.Min(CurrentDuration + currentTime, TotalDuration);
-            return Interpolation!.Interpolate(this, CurrentDuration);
+            return Interpolation!.Interpolate2D(this, CurrentDuration);
         }
 
         public ITo From(short x, short y) => From2D(x, y);
@@ -81,7 +81,7 @@ namespace GameMath.Tweening.Tweens
             return this;
         }
 
-        public ITween2D Build()
+        public ITweenVector2D Build()
         {
             IsBuilded = true;
             return this;
@@ -89,13 +89,13 @@ namespace GameMath.Tweening.Tweens
 
         private ITo From2D(dynamic x, dynamic y)
         {
-            StartValue = new Vector2D.Vector2D(x, y);
+            StartValue = new Vectors.Vector2D(x, y);
             return this;
         }
 
         private IFor To2D(dynamic x, dynamic y)
         {
-            EndValue = new Vector2D.Vector2D(x, y);
+            EndValue = new Vectors.Vector2D(x, y);
             return this;
         }
     }

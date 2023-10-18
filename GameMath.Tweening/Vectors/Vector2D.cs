@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameMath.Tweening.Vector2D
+namespace GameMath.Tweening.Vectors
 {
     public class Vector2D
     {

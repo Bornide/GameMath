@@ -18,5 +18,20 @@ namespace GameMath.Tweening
         {
             throw new NotImplementedException();
         }
+
+        public override Vectors.Vector2D Interpolate2D(Quadratic interpolation, Tween tween, double currentDuration)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override Vectors.Vector2D Interpolate2D(Cubic interpolation, Tween tween, double currentDuration)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override Vectors.Vector2D Interpolate2D(Elastic interpolation, Tween tween, double currentDuration)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

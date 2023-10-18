@@ -1,9 +1,4 @@
-﻿using GameMath.Core.Exceptions.FluentBuilder;
-using GameMath.Tweening;
-using GameMath.Tweening.Point;
-using System.Security;
-
-namespace GameMath.Tweening.Tweens
+﻿namespace GameMath.Tweening.Tweens
 {
     abstract class Tween : ITween
     {
@@ -40,15 +35,6 @@ namespace GameMath.Tweening.Tweens
         {
             IsStarted = false;
         }
-
-        /*public T Update<T>(double currentTime)
-        {
-            if (!_isBuilded) throw new UnbuildException();
-            if (!_isStarted) return StartValue!;
-
-            CurrentDuration = Math.Min(CurrentDuration + currentTime, TotalDuration);
-            return Interpolate(CurrentDuration, StartValue, EndValue);
-        }*/
 
         /*protected void OnAnimationEnded()
         {

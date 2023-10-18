@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GameMath.Tweening.Tweens
+﻿namespace GameMath.Tweening.Tweens
 {
     abstract class Interpolation
     {
@@ -16,5 +10,6 @@ namespace GameMath.Tweening.Tweens
         }
 
         public abstract dynamic Interpolate(Tween tween, double currentDuration);
+        public abstract Vectors.Vector2D Interpolate2D(Tween tween, double currentDuration);
     }
 }

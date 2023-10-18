@@ -2,6 +2,6 @@
 {
     public interface IBuild
     {
-        ITween2D Build();
+        ITweenVector2D Build();
     }
 }

@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Vectors\" />
+    <Folder Include="Interfaces\Vector3D\" />
   </ItemGroup>
 
 </Project>

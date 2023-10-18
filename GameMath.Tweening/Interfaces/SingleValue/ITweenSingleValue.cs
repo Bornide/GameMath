@@ -1,6 +1,6 @@
-﻿namespace GameMath.Tweening.Point
+﻿namespace GameMath.Tweening.SingleValue
 {
-    public interface ITweenPoint : ITween
+    public interface ITweenSingleValue : GameMath.Tweening.ITween
     {
         dynamic Update(double currentTime);
 

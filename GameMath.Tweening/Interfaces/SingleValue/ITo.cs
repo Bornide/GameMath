@@ -1,4 +1,4 @@
-﻿namespace GameMath.Tweening.Point
+﻿namespace GameMath.Tweening.SingleValue
 {
     public interface ITo
     {

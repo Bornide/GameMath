@@ -1,5 +1,5 @@
 ﻿using GameMath.Core.Exceptions.FluentBuilder;
-using GameMath.Tweening.Point;
+using GameMath.Tweening.SingleValue;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GameMath.Tweening.Tweens
 {
-    class FromPoint : Tween, ITweenPoint, IFrom, ITo, IFor, IInterpolation, IEase, IBuild
+    class FromPoint : Tween, ITweenSingleValue, IFrom, ITo, IFor, IInterpolation, IEase, IBuild
     {
         public dynamic Update(double currentTime)
         {
@@ -80,7 +80,7 @@ namespace GameMath.Tweening.Tweens
             return this;
         }
 
-        public ITweenPoint Build()
+        public ITweenSingleValue Build()
         {
             IsBuilded = true;
             return this;

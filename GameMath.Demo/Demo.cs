@@ -1,6 +1,5 @@
 ﻿using GameMath.Tweening;
-using GameMath.Tweening.Point;
-using GameMath.Tweening.Vector2D;
+using GameMath.Tweening.SingleValue;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -14,8 +13,8 @@ namespace GameMath.Demo
         private Texture2D _rectangle;
         private double _linearX;
         private double _elasticX;
-        private ITweenPoint _linearTween;
-        private ITweenPoint _elasticTween;
+        private ITweenSingleValue _linearTween;
+        private ITweenSingleValue _elasticTween;
 
         public Demo()
         {
