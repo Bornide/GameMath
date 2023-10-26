@@ -2,7 +2,7 @@
 {
     public interface ITweenVector2D : ITween
     {
-        Vectors.Vector2D Update(double currentTime);
+        Vectors.Short.Vector2D Update(double currentTime);
 
         /*delegate void TweenEvent(ITween<T> tween);
         event TweenEvent? AnimationEnded;*/

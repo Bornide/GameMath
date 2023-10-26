@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameMath.Tweening.Vectors
+namespace GameMath.Tweening.Vectors.Decimal
 {
     public class Vector3D
     {
-        public dynamic X { get; set; }
-        public dynamic Y { get; set; }
-        public dynamic Z { get; set; }
+        public decimal X { get; set; }
+        public decimal Y { get; set; }
+        public decimal Z { get; set; }
 
-        public Vector3D(dynamic x, dynamic y, dynamic z)
+        public Vector3D(decimal x, decimal y, decimal z)
         {
             X = x;
             Y = y;

@@ -10,6 +10,6 @@
         }
 
         public abstract dynamic Interpolate(Tween tween, double currentDuration);
-        public abstract Vectors.Vector2D Interpolate2D(Tween tween, double currentDuration);
+        public abstract Vectors.Short.Vector2D Interpolate2D(Tween tween, double currentDuration);
     }
 }

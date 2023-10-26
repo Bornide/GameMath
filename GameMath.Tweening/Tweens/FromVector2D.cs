@@ -10,7 +10,7 @@ namespace GameMath.Tweening.Tweens
 {
     class FromVector2D : Tween, ITweenVector2D, IFrom, ITo, IFor, IInterpolation, IEase, IBuild
     {
-        public Vectors.Vector2D Update(double currentTime)
+        public Vectors.Short.Vector2D Update(double currentTime)
         {
             if (!IsBuilded) throw new UnbuildException();
             if (!IsStarted) return StartValue!;
@@ -19,7 +19,7 @@ namespace GameMath.Tweening.Tweens
             return Interpolation!.Interpolate2D(this, CurrentDuration);
         }
 
-        public ITo From(short x, short y) => From2D(x, y);
+        public ITo From(short x, short y) { StartValue = new Vectors.Short.Vector2D(x, y); return this; }
         public ITo From(int x, int y) => From2D(x, y);
         public ITo From(long x, long y) => From2D(x, y);
         public ITo From(float x, float y) => From2D(x, y);
