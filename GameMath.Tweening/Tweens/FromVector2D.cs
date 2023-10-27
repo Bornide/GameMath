@@ -86,17 +86,5 @@ namespace GameMath.Tweening.Tweens
             IsBuilded = true;
             return this;
         }
-
-        private ITo From2D(dynamic x, dynamic y)
-        {
-            StartValue = new Vectors.Vector2D(x, y);
-            return this;
-        }
-
-        private IFor To2D(dynamic x, dynamic y)
-        {
-            EndValue = new Vectors.Vector2D(x, y);
-            return this;
-        }
     }
 }

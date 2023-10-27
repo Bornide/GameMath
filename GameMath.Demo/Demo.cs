@@ -13,8 +13,8 @@ namespace GameMath.Demo
         private Texture2D _rectangle;
         private double _linearX;
         private double _elasticX;
-        private ITweenSingleValue _linearTween;
-        private ITweenSingleValue _elasticTween;
+        private ITweenShort _linearTween;
+        private ITweenShort _elasticTween;
 
         public Demo()
         {

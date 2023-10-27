@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GameMath.Tweening.Tweens
 {
-    class FromPoint : Tween, ITweenSingleValue, IFrom, ITo, IFor, IInterpolation, IEase, IBuild
+    class FromPoint : Tween, ITweenShort, IFrom, ITo, IFor, IInterpolation, IEase, IBuild
     {
         public dynamic Update(double currentTime)
         {
@@ -80,7 +80,7 @@ namespace GameMath.Tweening.Tweens
             return this;
         }
 
-        public ITweenSingleValue Build()
+        public ITweenShort Build()
         {
             IsBuilded = true;
             return this;
