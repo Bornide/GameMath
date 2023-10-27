@@ -1,12 +1,13 @@
 ﻿
 using GameMath.Tweening;
+using GameMath.Tweening.Interfaces;
 using GameMath.Tweening.Tweens;
 
 namespace GameMath.Tweening
 {
     public static class TweenBuilder
     {
-        public static SingleValue.ITo From(short startValue) => new FromPoint().From(startValue);
+        public static ITo<short> From(short startValue) => new Tween<short>().From(startValue);
         public static SingleValue.ITo From(int startValue) => new FromPoint().From(startValue);
         public static SingleValue.ITo From(long startValue) => new FromPoint().From(startValue);
         public static SingleValue.ITo From(float startValue) => new FromPoint().From(startValue);

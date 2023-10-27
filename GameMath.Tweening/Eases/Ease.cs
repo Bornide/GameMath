@@ -2,13 +2,10 @@
 
 namespace GameMath.Tweening
 {
-    abstract class Ease
+    abstract class Ease<T>
     {
-        public abstract dynamic Interpolate(Quadratic interpolation, Tween tween, double currentDuration);
-        public abstract dynamic Interpolate(Cubic interpolation, Tween tween, double currentDuration);
-        public abstract dynamic Interpolate(Elastic interpolation, Tween tween, double currentDuration);
-        public abstract Vectors.Short.Vector2D Interpolate2D(Quadratic interpolation, Tween tween, double currentDuration);
-        public abstract Vectors.Short.Vector2D Interpolate2D(Cubic interpolation, Tween tween, double currentDuration);
-        public abstract Vectors.Short.Vector2D Interpolate2D(Elastic interpolation, Tween tween, double currentDuration);
+        public abstract T Interpolate(Quadratic<T> interpolation, Tween<T> tween, double currentDuration);
+        public abstract T Interpolate(Cubic<T> interpolation, Tween<T> tween, double currentDuration);
+        public abstract T Interpolate(Elastic<T> interpolation, Tween<T> tween, double currentDuration);
     }
 }

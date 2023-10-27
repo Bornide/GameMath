@@ -1,17 +1,14 @@
 ﻿namespace GameMath.Tweening.Tweens
 {
-    internal class Cubic : Interpolation
+    internal class Cubic<T> : EasingInterpolation<T>
     {
-        public override dynamic Interpolate(Tween tween, double currentDuration)
+        public Cubic() : base() { }
+        public Cubic(Ease<T> easeingFunction) : base(easeingFunction) { }
+
+        public override T Interpolate(Tween<T> tween, double currentDuration)
         {
             //if (currentTime >= this.TotalDuration) OnAnimationEnded();
-            return EaseingFunction!.Interpolate(this, tween, currentDuration);
-        }
-
-        public override Vectors.Short.Vector2D Interpolate2D(Tween tween, double currentDuration)
-        {
-            return EaseingFunction!.Interpolate2D(this, tween, currentDuration);
-
+            return EaseingFunction.Interpolate(this, tween, currentDuration);
         }
     }
 }

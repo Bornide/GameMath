@@ -1,15 +1,7 @@
 ﻿namespace GameMath.Tweening.Tweens
 {
-    abstract class Interpolation
+    abstract class Interpolation<T>
     {
-        public Ease? EaseingFunction { get; set; }
-        protected Interpolation() { }
-        protected Interpolation(Ease easeingFunction)
-        {
-            EaseingFunction = easeingFunction;
-        }
-
-        public abstract dynamic Interpolate(Tween tween, double currentDuration);
-        public abstract Vectors.Short.Vector2D Interpolate2D(Tween tween, double currentDuration);
+        public abstract T Interpolate(Tween<T> tween, double currentDuration);
     }
 }

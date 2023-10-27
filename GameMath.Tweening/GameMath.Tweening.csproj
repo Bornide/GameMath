@@ -10,18 +10,4 @@
     <ProjectReference Include="..\GameMath\GameMath.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Interfaces\Decimal\Vector3D\" />
-    <Folder Include="Interfaces\Decimal\Vector2D\" />
-    <Folder Include="Interfaces\Double\Vector2D\" />
-    <Folder Include="Interfaces\Double\Vector3D\" />
-    <Folder Include="Interfaces\Float\Vector2D\" />
-    <Folder Include="Interfaces\Float\Vector3D\" />
-    <Folder Include="Interfaces\Int\Vector2D\" />
-    <Folder Include="Interfaces\Int\Vector3D\" />
-    <Folder Include="Interfaces\Long\Vector2D\" />
-    <Folder Include="Interfaces\Long\Vector3D\" />
-    <Folder Include="Interfaces\Short\Vector3D\" />
-  </ItemGroup>
-
 </Project>

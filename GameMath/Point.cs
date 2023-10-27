@@ -1,7 +1,7 @@
 ﻿
 namespace GameMath.Core
 {
-    public struct Point
+    struct Point
     {
         private readonly int _x;
         private readonly int _y;

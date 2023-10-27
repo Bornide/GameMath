@@ -22,7 +22,7 @@ namespace GameMath.Demo
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
-            _linearTween = TweenBuilder.From(100).To(600).For(1000f).Linear().Build();
+            _linearTween = TweenBuilder.From(100, 100).To(600, 600).For(1000f).Linear().Build();
             _elasticTween = TweenBuilder.From(100).To(600).For(1000f).Elastic().EaseInOut().Build();
         }
 
@@ -49,7 +49,9 @@ namespace GameMath.Demo
                 _elasticTween.Start();
             }
 
-            _linearX = _linearTween.Update(gameTime.ElapsedGameTime.Milliseconds);
+            System.Drawing.Point p = new System.Drawing.Point();
+
+            p.X = _linearTween.Update(gameTime.ElapsedGameTime.Milliseconds);
             _elasticX = _elasticTween.Update(gameTime.ElapsedGameTime.Milliseconds);
 
             base.Update(gameTime);

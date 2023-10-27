@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameMath.Tweening.Vectors.Int
+namespace GameMath.Core
 {
-    public class Vector2D
+    public struct Point2D<T>
     {
-        public int X { get; set; }
-        public int Y { get; set; }
+        public T X { get; set; }
+        public T Y { get; set; }
 
-        public Vector2D(int x, int y)
+        public Point2D(T x, T y)
         {
             X = x;
             Y = y;
