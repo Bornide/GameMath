@@ -1,6 +1,6 @@
 ﻿namespace GameMath.Tweening.Interfaces;
 
-public interface ITo<T>
+public interface ITo<TIn, TOut>
 {
-    IFor<T> To(T endValue);
+    IFor<TIn, TOut> To(TIn endValue);
 }

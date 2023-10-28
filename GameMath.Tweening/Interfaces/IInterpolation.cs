@@ -1,16 +1,16 @@
 ﻿namespace GameMath.Tweening.Interfaces;
 
-public interface IInterpolation<T>
+public interface IInterpolation<TIn, TOut>
 {
-    IBuild<T> Linear();
-    IEase<T> Sine();
-    IEase<T> Quad();
-    IEase<T> Cubic();
-    IEase<T> Quart();
-    IEase<T> Quint();
-    IEase<T> Expo();
-    IEase<T> Circ();
-    IEase<T> Back();
-    IEase<T> Elastic();
-    IEase<T> Bounce();
+    IBuild<TIn, TOut> Linear();
+    IEase<TIn, TOut> Sine();
+    IEase<TIn, TOut> Quad();
+    IEase<TIn, TOut> Cubic();
+    IEase<TIn, TOut> Quart();
+    IEase<TIn, TOut> Quint();
+    IEase<TIn, TOut> Expo();
+    IEase<TIn, TOut> Circ();
+    IEase<TIn, TOut> Back();
+    IEase<TIn, TOut> Elastic();
+    IEase<TIn, TOut> Bounce();
 }

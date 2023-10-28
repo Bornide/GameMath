@@ -1,29 +1,35 @@
 ﻿using GameMath.Core;
 using GameMath.Tweening.Interfaces;
+using GameMath.Tweening.Interpolations;
 
 namespace GameMath.Tweening.Tweens
 {
-    abstract class Tween<T> : ITween<T>, IFor<T>, IInterpolation<T>, IEase<T>, IBuild<T>
+    abstract class Tween<TIn, TOut> : ITween<TIn, TOut>, 
+        IFrom<TIn, TOut>,
+        IFrom2D<TIn, TOut>,
+        IFrom3D<TIn, TOut>,
+        ITo<TIn, TOut>,
+        ITo2D<TIn, TOut>,
+        ITo3D<TIn, TOut>,
+        IFor<TIn, TOut>,
+        IInterpolation<TIn, TOut>,
+        IBuild<TIn, TOut>
     {
         public double CurrentDuration { get; protected set; }
         public double TotalDuration { get; protected set; }
-        public T StartValues { get; protected set; }
-        public T EndValues { get; protected set; }
+        public TIn[] StartValues { get; protected set; }
+        public TIn[] EndValues { get; protected set; }
         
         //public event ITween<T>.TweenEvent? AnimationEnded;
 
         protected bool IsBuilded = false;
         protected bool IsStarted = false;
-        protected Interpolation<T> Interpolation;
+        //protected Interpolation Interpolation;
+        protected Func<TIn[], TOut> Interpolation;
 
         public void Start()
         {
             IsStarted = true;
-        }
-
-        public T Update(double currentTime)
-        {
-            return Interpolation.Interpolate(this, CurrentDuration);
         }
 
         public void Restart()
@@ -44,65 +50,65 @@ namespace GameMath.Tweening.Tweens
             IsStarted = false;
         }
 
-        public IInterpolation<T> For(double duration)
+        public ITo<TIn, TOut> From(TIn startValue)
+        {
+            StartValues = new TIn[]{ startValue };
+            return this;
+        }
+
+        public ITo2D<TIn, TOut> From(TIn x, TIn y)
+        {
+            StartValues = new TIn[] { x, y };
+            return this;
+        }
+
+        public ITo3D<TIn, TOut> From(TIn x, TIn y, TIn z)
+        {
+            StartValues = new TIn[] { x, y, z };
+            return this;
+        }
+
+        public IFor<TIn, TOut> To(TIn endValue)
+        {
+            EndValues = new TIn[] { endValue };
+            return this;
+        }
+
+        public IFor<TIn, TOut> To(TIn x, TIn y)
+        {
+            EndValues = new TIn[] { x, y };
+            return this;
+        }
+
+        public IFor<TIn, TOut> To(TIn x, TIn y, TIn z)
+        {
+            EndValues = new TIn[] { x, y, z };
+            return this;
+        }
+
+        public IInterpolation<TIn, TOut> For(double duration)
         {
             TotalDuration = duration;
             return this;
         }
 
-        public IBuild<T> Linear()
+        public ITween<TIn, TOut> Build()
         {
-            throw new NotImplementedException();
+            return this;
         }
 
-        public IEase<T> Sine()
-        {
-            throw new NotImplementedException();
-        }
+        public abstract IBuild<TIn, TOut> Linear();
+        public abstract IEase<TIn, TOut> Sine();
+        public abstract IEase<TIn, TOut> Quad();
+        public abstract IEase<TIn, TOut> Cubic();
+        public abstract IEase<TIn, TOut> Quart();
+        public abstract IEase<TIn, TOut> Quint();
+        public abstract IEase<TIn, TOut> Expo();
+        public abstract IEase<TIn, TOut> Circ();
+        public abstract IEase<TIn, TOut> Back();
+        public abstract IEase<TIn, TOut> Elastic();
+        public abstract IEase<TIn, TOut> Bounce();
 
-        public IEase<T> Quad()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEase<T> Cubic()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEase<T> Quart()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEase<T> Quint()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEase<T> Expo()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEase<T> Circ()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEase<T> Back()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEase<T> Elastic()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEase<T> Bounce()
-        {
-            throw new NotImplementedException();
-        }
+        public abstract TOut Update(double currentTime);
     }
 }

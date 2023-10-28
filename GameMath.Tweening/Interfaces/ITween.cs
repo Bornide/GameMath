@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace GameMath.Tweening
 {
-    public interface ITween<T>
+    public interface ITween<TIn, TOut>
     {
         void Start();
-        T Update(double currentTime);
+        TOut Update(double currentTime);
         void Restart();
         void Reverse();
         void Stop();

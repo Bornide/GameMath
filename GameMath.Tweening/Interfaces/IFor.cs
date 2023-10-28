@@ -1,6 +1,6 @@
 ﻿namespace GameMath.Tweening.Interfaces;
 
-public interface IFor<T>
+public interface IFor<TIn, TOut>
 {
-    IInterpolation<T> For(double duration);
+    IInterpolation<TIn, TOut> For(double duration);
 }

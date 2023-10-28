@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace GameMath.Tweening.Interfaces
 {
-    public interface IFrom
+    public interface IFrom<TIn, TOut>
     {
-        ITo<short> From(short startValue);
-        ITo<int> From(int startValue);
+        ITo<TIn, TOut> From(TIn startValue);
+        /*ITo<int> From(int startValue);
         ITo<long> From(long startValue);
         ITo<float> From(float startValue);
         ITo<double> From(double startValue);
@@ -28,6 +28,6 @@ namespace GameMath.Tweening.Interfaces
         ITo3D<long> From(long x, long y, long z);
         ITo3D<float> From(float x, float y, float z);
         ITo3D<double> From(double x, double y, double z);
-        ITo3D<decimal> From(decimal x, decimal y, decimal z);
+        ITo3D<decimal> From(decimal x, decimal y, decimal z);*/
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace GameMath.Tweening.Interfaces;
 
-public interface IBuild<T>
+public interface IBuild<TIn, TOut>
 {
-    ITween<T> Build();
+    ITween<TIn, TOut> Build();
 }

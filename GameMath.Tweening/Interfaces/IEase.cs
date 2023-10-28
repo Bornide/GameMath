@@ -1,8 +1,8 @@
 ﻿namespace GameMath.Tweening.Interfaces;
 
-public interface IEase<T>
+public interface IEase<TIn, TOut>
 {
-    IBuild<T> EaseIn();
-    IBuild<T> EaseOut();
-    IBuild<T> EaseInOut();
+    IBuild<TIn, TOut> EaseIn();
+    IBuild<TIn, TOut> EaseOut();
+    IBuild<TIn, TOut> EaseInOut();
 }

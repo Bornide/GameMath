@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace GameMath.Tweening.Interfaces
 {
-    public interface ITo3D<T>
+    public interface ITo3D<TIn, TOut>
     {
-        IFor<Point3D<T>> To(T x, T y, T z);
+        IFor<TIn, TOut> To(TIn x, TIn y, TIn z);
     }
 }
