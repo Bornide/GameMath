@@ -25,9 +25,9 @@ namespace GameMath.Demo
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
-            _easeInTween = TweenBuilder.From(100).To(600).For(1000f).Back(3).EaseIn().Build();
-            _easeOutTween = TweenBuilder.From(100).To(600).For(1000f).Back(3).EaseOut().Build();
-            _easeInOutTween = TweenBuilder.From(100).To(600).For(1000f).Back(3).EaseInOut().Build();
+            _easeInTween = TweenBuilder.From(100).To(600).For(2000f).Elastic(0.5).EaseInOut().Build();
+            _easeOutTween = TweenBuilder.From(100).To(600).For(2000f).Elastic(1).EaseInOut().Build();
+            _easeInOutTween = TweenBuilder.From(100).To(600).For(2000f).Elastic(2).EaseInOut().Build();
         }
 
         protected override void Initialize()

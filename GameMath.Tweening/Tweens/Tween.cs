@@ -173,13 +173,6 @@ namespace GameMath.Tweening.Tweens
             return this;
         }
 
-        public IEase<TIn, TOut> Intensity(double intensity = 1)
-        {
-            var intensityEasingInterpolation = Interpolation as IntensityEasingInterpolation<TOut>;
-            intensityEasingInterpolation!.SetIntensity(intensity);
-            return this;
-        }
-
         public IBuild<TIn, TOut> EaseIn()
         {
             var easingInterpolation = Interpolation as EasingInterpolation<TOut>;

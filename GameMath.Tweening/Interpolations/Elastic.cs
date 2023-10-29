@@ -10,22 +10,14 @@ class Elastic<TOut> : IntensityEasingInterpolation<TOut>
         SetIntensity(intensity);
 
         double c4 = (2 * Math.PI) / 3;
-        double c5 = (2 * Math.PI) / 4.5;
-        EasingInFunction = (t) => 
-        { 
-            return t == 0
-              ? 0
-              : t == 1
-              ? 1
-              : -Math.Pow(2, 10 * t - 10) * Math.Sin((t * 10 - 10.75) * c4);
-        };
+        EasingInFunction = (t) => { return 1 - EasingOutFunction(1 - t); };
         EasingOutFunction = (t) => 
         { 
             return t == 0
               ? 0
               : t == 1
               ? 1
-              : Math.Pow(2, -10 * t) * Math.Sin((t * 10 - 0.75) * c4) + 1;
+              : Math.Pow(2, -10 * t) * Math.Sin((t * 10 * Intensity - 0.75) * c4) + 1;
         };
         EasingInOutFunction = (t) =>
         {
@@ -33,9 +25,7 @@ class Elastic<TOut> : IntensityEasingInterpolation<TOut>
               ? 0
               : t == 1
               ? 1
-              : t < 0.5
-              ? -(Math.Pow(2, 20 * t - 10) * Math.Sin((20 * t - 11.125) * c5)) / 2
-              : (Math.Pow(2, -20 * t + 10) * Math.Sin((20 * t - 11.125) * c5)) / 2 + 1;
+              : t < 0.5 ? (1 - EasingOutFunction(1 - 2 * t)) / 2 : (1 + EasingOutFunction(2 * t - 1)) / 2;
         };
     }
 }
