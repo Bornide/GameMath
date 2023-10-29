@@ -12,12 +12,12 @@ namespace GameMath.Demo
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private Texture2D _rectangle;
-        private int _easeInX;
-        private int _easeOutX;
-        private int _easeInOutX;
-        private ITween<int, decimal> _easeInTween;
-        private ITween<int, decimal> _easeOutTween;
-        private ITween<int, decimal> _easeInOutTween;
+        private int _elasticX;
+        private int _bounceX;
+        private Point2D<int> _backPoint;
+        private ITween<int, decimal> _elasticTween;
+        private ITween<int, decimal> _bounceTween;
+        private ITween<int, Point2D<decimal>> _backTween;
 
         public Demo()
         {
@@ -25,9 +25,9 @@ namespace GameMath.Demo
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
-            _easeInTween = TweenBuilder.From(100).To(600).For(2000f).Elastic(0.5).EaseInOut().Build();
-            _easeOutTween = TweenBuilder.From(100).To(600).For(2000f).Elastic(1).EaseInOut().Build();
-            _easeInOutTween = TweenBuilder.From(100).To(600).For(2000f).Elastic(2).EaseInOut().Build();
+            _elasticTween = TweenBuilder.From(100).To(600).For(3500f).Elastic(2).EaseOut().Build();
+            _bounceTween = TweenBuilder.From(100).To(600).For(2000f).Bounce().EaseOut().Build();
+            _backTween = TweenBuilder.From(100, 300).To(600, 400).For(1500f).Back(0.75).EaseInOut().Build();
         }
 
         protected override void Initialize()
@@ -49,20 +49,20 @@ namespace GameMath.Demo
 
             if (Keyboard.GetState().IsKeyDown(Keys.Space))
             {
-                _easeInTween.Start();
-                _easeOutTween.Start();
-                _easeInOutTween.Start();
+                _elasticTween.Start();
+                _bounceTween.Start();
+                _backTween.Start();
             }
             if (Keyboard.GetState().IsKeyDown(Keys.R))
             {
-                _easeInTween.Restart();
-                _easeOutTween.Restart();
-                _easeInOutTween.Restart();
+                _elasticTween.Restart();
+                _bounceTween.Restart();
+                _backTween.Restart();
             }
 
-            _easeInX = _easeInTween.Update(gameTime.ElapsedGameTime.Milliseconds).ToInt();
-            _easeOutX = _easeOutTween.Update(gameTime.ElapsedGameTime.Milliseconds).ToInt();
-            _easeInOutX = _easeInOutTween.Update(gameTime.ElapsedGameTime.Milliseconds).ToInt();
+            _elasticX = _elasticTween.Update(gameTime.ElapsedGameTime.Milliseconds).ToInt();
+            _bounceX = _bounceTween.Update(gameTime.ElapsedGameTime.Milliseconds).ToInt();
+            _backPoint = _backTween.Update(gameTime.ElapsedGameTime.Milliseconds).ToInt();
 
             base.Update(gameTime);
         }
@@ -71,9 +71,9 @@ namespace GameMath.Demo
         {
             GraphicsDevice.Clear(new Color(20, 20, 20));
             _spriteBatch.Begin();
-            _spriteBatch.Draw(_rectangle, new Rectangle(_easeInX, 50, 50, 50), Color.White);
-            _spriteBatch.Draw(_rectangle, new Rectangle(_easeOutX, 200, 50, 50), Color.White);
-            _spriteBatch.Draw(_rectangle, new Rectangle(_easeInOutX, 350, 50, 50), Color.White);
+            _spriteBatch.Draw(_rectangle, new Rectangle(_elasticX, 50, 50, 50), Color.White);
+            _spriteBatch.Draw(_rectangle, new Rectangle(_bounceX, 200, 50, 50), Color.White);
+            _spriteBatch.Draw(_rectangle, new Rectangle(_backPoint.X, _backPoint.Y, 50, 50), Color.White);
             _spriteBatch.End();
             base.Draw(gameTime);
         }
