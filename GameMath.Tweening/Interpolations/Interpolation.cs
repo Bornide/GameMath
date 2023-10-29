@@ -2,12 +2,12 @@
 
 namespace GameMath.Tweening.Interpolations;
 
-abstract class Interpolation
+abstract class Interpolation<TOut>
 {
-    public abstract double[] Interpolate(Tween<short, double> tween, double currentDuration);
-    public abstract double[] Interpolate(Tween<int, double> tween, double currentDuration);
-    public abstract double[] Interpolate(Tween<long, double> tween, double currentDuration);
-    public abstract double[] Interpolate(Tween<float, double> tween, double currentDuration);
-    public abstract double[] Interpolate(Tween<double, double> tween, double currentDuration);
-    public abstract decimal[] Interpolate(Tween<decimal, decimal> tween, double currentDuration);
+    public abstract decimal[] Interpolate(Tween<short, TOut> tween, double currentDuration);
+    public abstract decimal[] Interpolate(Tween<int, TOut> tween, double currentDuration);
+    public abstract decimal[] Interpolate(Tween<long, TOut> tween, double currentDuration);
+    public abstract decimal[] Interpolate(Tween<float, TOut> tween, double currentDuration);
+    public abstract decimal[] Interpolate(Tween<double, TOut> tween, double currentDuration);
+    public abstract decimal[] Interpolate(Tween<decimal, TOut> tween, double currentDuration);
 }

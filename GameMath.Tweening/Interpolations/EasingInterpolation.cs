@@ -1,59 +1,96 @@
-﻿using GameMath.Tweening.Tweens;
+﻿using GameMath.Core.Extensions;
+using GameMath.Tweening.Eases;
+using GameMath.Tweening.Tweens;
 
 namespace GameMath.Tweening.Interpolations;
 
-abstract class EasingInterpolation : Interpolation
+abstract class EasingInterpolation<TOut> : Interpolation<TOut>
 {
-    public Ease EasingFunction { get; set; }
+    public Ease<TOut> EasingFunction { get; set; }
+    protected virtual Func<double, double> EasingInFunction { get; set; }
+    protected virtual Func<double, double> EasingOutFunction { get; set; }
+    protected virtual Func<double, double> EasingInOutFunction { get; set; }
 
-    public override double[] Interpolate(Tween<short, double> tween, double currentDuration)
+    public override decimal[] Interpolate(Tween<short, TOut> tween, double currentDuration) 
+        => EasingFunction.Interpolate(this, tween, currentDuration);
+
+    public override decimal[] Interpolate(Tween<int, TOut> tween, double currentDuration)
+        => EasingFunction.Interpolate(this, tween, currentDuration);
+
+    public override decimal[] Interpolate(Tween<long, TOut> tween, double currentDuration)
+        => EasingFunction.Interpolate(this, tween, currentDuration);
+
+    public override decimal[] Interpolate(Tween<float, TOut> tween, double currentDuration)
+        => EasingFunction.Interpolate(this, tween, currentDuration);
+
+    public override decimal[] Interpolate(Tween<double, TOut> tween, double currentDuration)
+        => EasingFunction.Interpolate(this, tween, currentDuration);
+
+    public override decimal[] Interpolate(Tween<decimal, TOut> tween, double currentDuration)
+        => EasingFunction.Interpolate(this, tween, currentDuration);
+
+    public decimal[] Interpolate(EaseIn<TOut> easeIn, Tween<short, TOut> tween, double currentDuration)
+        => Interpolate(EasingInFunction, tween.StartValues.ToDecimal(), tween.EndValues.ToDecimal(), currentDuration, tween.TotalDuration);
+
+    public decimal[] Interpolate(EaseIn<TOut> easeIn, Tween<int, TOut> tween, double currentDuration)
+        => Interpolate(EasingInFunction, tween.StartValues.ToDecimal(), tween.EndValues.ToDecimal(), currentDuration, tween.TotalDuration);
+
+    public decimal[] Interpolate(EaseIn<TOut> easeIn, Tween<long, TOut> tween, double currentDuration)
+        => Interpolate(EasingInFunction, tween.StartValues.ToDecimal(), tween.EndValues.ToDecimal(), currentDuration, tween.TotalDuration);
+
+    public decimal[] Interpolate(EaseIn<TOut> easeIn, Tween<float, TOut> tween, double currentDuration)
+        => Interpolate(EasingInFunction, tween.StartValues.ToDecimal(), tween.EndValues.ToDecimal(), currentDuration, tween.TotalDuration);
+
+    public decimal[] Interpolate(EaseIn<TOut> easeIn, Tween<double, TOut> tween, double currentDuration)
+        => Interpolate(EasingInFunction, tween.StartValues.ToDecimal(), tween.EndValues.ToDecimal(), currentDuration, tween.TotalDuration);
+
+    public decimal[] Interpolate(EaseIn<TOut> easeIn, Tween<decimal, TOut> tween, double currentDuration)
+        => Interpolate(EasingInFunction, tween.StartValues, tween.EndValues, currentDuration, tween.TotalDuration);
+
+    public decimal[] Interpolate(EaseOut<TOut> easeOut, Tween<short, TOut> tween, double currentDuration)
+        => Interpolate(EasingOutFunction, tween.StartValues.ToDecimal(), tween.EndValues.ToDecimal(), currentDuration, tween.TotalDuration);
+
+    public decimal[] Interpolate(EaseOut<TOut> easeOut, Tween<int, TOut> tween, double currentDuration)
+        => Interpolate(EasingOutFunction, tween.StartValues.ToDecimal(), tween.EndValues.ToDecimal(), currentDuration, tween.TotalDuration);
+
+    public decimal[] Interpolate(EaseOut<TOut> easeOut, Tween<long, TOut> tween, double currentDuration)
+        => Interpolate(EasingOutFunction, tween.StartValues.ToDecimal(), tween.EndValues.ToDecimal(), currentDuration, tween.TotalDuration);
+
+    public decimal[] Interpolate(EaseOut<TOut> easeOut, Tween<float, TOut> tween, double currentDuration)
+        => Interpolate(EasingOutFunction, tween.StartValues.ToDecimal(), tween.EndValues.ToDecimal(), currentDuration, tween.TotalDuration);
+
+    public decimal[] Interpolate(EaseOut<TOut> easeOut, Tween<double, TOut> tween, double currentDuration)
+        => Interpolate(EasingOutFunction, tween.StartValues.ToDecimal(), tween.EndValues.ToDecimal(), currentDuration, tween.TotalDuration);
+
+    public decimal[] Interpolate(EaseOut<TOut> easeOut, Tween<decimal, TOut> tween, double currentDuration)
+        => Interpolate(EasingOutFunction, tween.StartValues, tween.EndValues, currentDuration, tween.TotalDuration);
+
+    public decimal[] Interpolate(EaseInOut<TOut> easeInOut, Tween<short, TOut> tween, double currentDuration)
+        => Interpolate(EasingInOutFunction, tween.StartValues.ToDecimal(), tween.EndValues.ToDecimal(), currentDuration, tween.TotalDuration);
+
+    public decimal[] Interpolate(EaseInOut<TOut> easeInOut, Tween<int, TOut> tween, double currentDuration)
+        => Interpolate(EasingInOutFunction, tween.StartValues.ToDecimal(), tween.EndValues.ToDecimal(), currentDuration, tween.TotalDuration);
+
+    public decimal[] Interpolate(EaseInOut<TOut> easeInOut, Tween<long, TOut> tween, double currentDuration)
+        => Interpolate(EasingInOutFunction, tween.StartValues.ToDecimal(), tween.EndValues.ToDecimal(), currentDuration, tween.TotalDuration);
+
+    public decimal[] Interpolate(EaseInOut<TOut> easeInOut, Tween<float, TOut> tween, double currentDuration)
+        => Interpolate(EasingInOutFunction, tween.StartValues.ToDecimal(), tween.EndValues.ToDecimal(), currentDuration, tween.TotalDuration);
+
+    public decimal[] Interpolate(EaseInOut<TOut> easeInOut, Tween<double, TOut> tween, double currentDuration)
+        => Interpolate(EasingInOutFunction, tween.StartValues.ToDecimal(), tween.EndValues.ToDecimal(), currentDuration, tween.TotalDuration);
+
+    public decimal[] Interpolate(EaseInOut<TOut> easeInOut, Tween<decimal, TOut> tween, double currentDuration)
+        => Interpolate(EasingInOutFunction, tween.StartValues, tween.EndValues, currentDuration, tween.TotalDuration);
+
+    protected decimal[] Interpolate(Func<double, double> EasingFunction, decimal[] startValues, decimal[] endValues, double currentDuration, double totalDuration)
     {
-        return EasingFunction.Interpolate(this, tween, currentDuration);
+        double t = currentDuration / totalDuration;
+        double tweenValue = EasingFunction(t);
+
+        decimal[] result = new decimal[startValues.Length];
+        for (int i = 0; i < startValues.Length; i++)
+            result[i] = startValues[i] + (endValues[i] - startValues[i]) * Convert.ToDecimal(tweenValue);
+        return result;
     }
-
-    public override double[] Interpolate(Tween<int, double> tween, double currentDuration)
-    {
-        return EasingFunction.Interpolate(this, tween, currentDuration);
-    }
-
-    public override double[] Interpolate(Tween<long, double> tween, double currentDuration)
-    {
-        return EasingFunction.Interpolate(this, tween, currentDuration);
-    }
-
-    public override double[] Interpolate(Tween<float, double> tween, double currentDuration)
-    {
-        return EasingFunction.Interpolate(this, tween, currentDuration);
-    }
-
-    public override double[] Interpolate(Tween<double, double> tween, double currentDuration)
-    {
-        return EasingFunction.Interpolate(this, tween, currentDuration);
-    }
-
-    public override decimal[] Interpolate(Tween<decimal, decimal> tween, double currentDuration)
-    {
-        return EasingFunction.Interpolate(this, tween, currentDuration);
-    }
-
-    public abstract double[] Interpolate(EaseIn easeIn, Tween<short, double> tween, double currentDuration);
-    public abstract double[] Interpolate(EaseIn easeIn, Tween<int, double> tween, double currentDuration);
-    public abstract double[] Interpolate(EaseIn easeIn, Tween<long, double> tween, double currentDuration);
-    public abstract double[] Interpolate(EaseIn easeIn, Tween<float, double> tween, double currentDuration);
-    public abstract double[] Interpolate(EaseIn easeIn, Tween<double, double> tween, double currentDuration);
-    public abstract decimal[] Interpolate(EaseIn easeIn, Tween<decimal, decimal> tween, double currentDuration);
-
-    public abstract double[] Interpolate(EaseOut easeOut, Tween<short, double> tween, double currentDuration);
-    public abstract double[] Interpolate(EaseOut easeOut, Tween<int, double> tween, double currentDuration);
-    public abstract double[] Interpolate(EaseOut easeOut, Tween<long, double> tween, double currentDuration);
-    public abstract double[] Interpolate(EaseOut easeOut, Tween<float, double> tween, double currentDuration);
-    public abstract double[] Interpolate(EaseOut easeOut, Tween<double, double> tween, double currentDuration);
-    public abstract decimal[] Interpolate(EaseOut easeOut, Tween<decimal, decimal> tween, double currentDuration);
-
-    public abstract double[] Interpolate(EaseInOut easeInOut, Tween<short, double> tween, double currentDuration);
-    public abstract double[] Interpolate(EaseInOut easeInOut, Tween<int, double> tween, double currentDuration);
-    public abstract double[] Interpolate(EaseInOut easeInOut, Tween<long, double> tween, double currentDuration);
-    public abstract double[] Interpolate(EaseInOut easeInOut, Tween<float, double> tween, double currentDuration);
-    public abstract double[] Interpolate(EaseInOut easeInOut, Tween<double, double> tween, double currentDuration);
-    public abstract decimal[] Interpolate(EaseInOut easeInOut, Tween<decimal, decimal> tween, double currentDuration);
 }

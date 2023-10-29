@@ -1,24 +1,29 @@
-﻿
-using GameMath.Tweening;
+﻿using GameMath.Core;
 using GameMath.Tweening.Interfaces;
-using GameMath.Tweening.Tweens;
 
 namespace GameMath.Tweening
 {
     public static class TweenBuilder
     {
-        public static ITo<short> From(short startValue) => new Tween<short>().From(startValue);
-        public static SingleValue.ITo From(int startValue) => new FromPoint().From(startValue);
-        public static SingleValue.ITo From(long startValue) => new FromPoint().From(startValue);
-        public static SingleValue.ITo From(float startValue) => new FromPoint().From(startValue);
-        public static SingleValue.ITo From(double startValue) => new FromPoint().From(startValue);
-        public static SingleValue.ITo From(decimal startValue) => new FromPoint().From(startValue);
+        public static ITo<short, decimal> From(short startValue) => new Tweens.Short.Tween().From(startValue);
+        public static ITo<int, decimal> From(int startValue) => new Tweens.Int.Tween().From(startValue);
+        public static ITo<long, decimal> From(long startValue) => new Tweens.Long.Tween().From(startValue);
+        public static ITo<float, decimal> From(float startValue) => new Tweens.Float.Tween().From(startValue);
+        public static ITo<double, decimal> From(double startValue) => new Tweens.Double.Tween().From(startValue);
+        public static ITo<decimal, decimal> From(decimal startValue) => new Tweens.Decimal.Tween().From(startValue);
 
-        public static Vector2D.ITo From(short x, short y) => new FromVector2D().From(x, y);
-        public static Vector2D.ITo From(int x, int y) => new FromVector2D().From(x, y);
-        public static Vector2D.ITo From(long x, long y) => new FromVector2D().From(x, y);
-        public static Vector2D.ITo From(float x, float y) => new FromVector2D().From(x, y);
-        public static Vector2D.ITo From(double x, double y) => new FromVector2D().From(x, y);
-        public static Vector2D.ITo From(decimal x, decimal y) => new FromVector2D().From(x, y);
+        public static ITo2D<short, Point2D<decimal>> From(short x, short y) => new Tweens.Short.Tween2D().From(x, y);
+        public static ITo2D<int, Point2D<decimal>> From(int x, int y) => new Tweens.Int.Tween2D().From(x, y);
+        public static ITo2D<long, Point2D<decimal>> From(long x, long y) => new Tweens.Long.Tween2D().From(x, y);
+        public static ITo2D<float, Point2D<decimal>> From(float x, float y) => new Tweens.Float.Tween2D().From(x, y);
+        public static ITo2D<double, Point2D<decimal>> From(double x, double y) => new Tweens.Double.Tween2D().From(x, y);
+        public static ITo2D<decimal, Point2D<decimal>> From(decimal x, decimal y) => new Tweens.Decimal.Tween2D().From(x, y);
+
+        public static ITo3D<short, Point3D<decimal>> From(short x, short y, short z) => new Tweens.Short.Tween3D().From(x, y, z);
+        public static ITo3D<int, Point3D<decimal>> From(int x, int y, int z) => new Tweens.Int.Tween3D().From(x, y, z);
+        public static ITo3D<long, Point3D<decimal>> From(long x, long y, long z) => new Tweens.Long.Tween3D().From(x, y, z);
+        public static ITo3D<float, Point3D<decimal>> From(float x, float y, float z) => new Tweens.Float.Tween3D().From(x, y, z);
+        public static ITo3D<double, Point3D<decimal>> From(double x, double y, double z) => new Tweens.Double.Tween3D().From(x, y, z);
+        public static ITo3D<decimal, Point3D<decimal>> From(decimal x, decimal y, decimal z) => new Tweens.Decimal.Tween3D().From(x, y, z);
     }
 }

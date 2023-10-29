@@ -1,96 +1,41 @@
-﻿using GameMath.Tweening.Tweens;
+﻿using GameMath.Tweening.Eases;
+using GameMath.Tweening.Tweens;
 
 namespace GameMath.Tweening.Interpolations;
 
-class Elastic : EasingInterpolation
+class Elastic<TOut> : IntensityEasingInterpolation<TOut>
 {
-    public override double[] Interpolate(EaseIn easeIn, Tween<short, double> tween, double currentDuration)
+    public Elastic(double intensity)
     {
-        throw new NotImplementedException();
-    }
+        SetIntensity(intensity);
 
-    public override double[] Interpolate(EaseIn easeIn, Tween<int, double> tween, double currentDuration)
-    {
-        throw new NotImplementedException();
-    }
-
-    public override double[] Interpolate(EaseIn easeIn, Tween<long, double> tween, double currentDuration)
-    {
-        throw new NotImplementedException();
-    }
-
-    public override double[] Interpolate(EaseIn easeIn, Tween<float, double> tween, double currentDuration)
-    {
-        throw new NotImplementedException();
-    }
-
-    public override double[] Interpolate(EaseIn easeIn, Tween<double, double> tween, double currentDuration)
-    {
-        throw new NotImplementedException();
-    }
-
-    public override decimal[] Interpolate(EaseIn easeIn, Tween<decimal, decimal> tween, double currentDuration)
-    {
-        throw new NotImplementedException();
-    }
-
-    public override double[] Interpolate(EaseOut easeOut, Tween<short, double> tween, double currentDuration)
-    {
-        throw new NotImplementedException();
-    }
-
-    public override double[] Interpolate(EaseOut easeOut, Tween<int, double> tween, double currentDuration)
-    {
-        throw new NotImplementedException();
-    }
-
-    public override double[] Interpolate(EaseOut easeOut, Tween<long, double> tween, double currentDuration)
-    {
-        throw new NotImplementedException();
-    }
-
-    public override double[] Interpolate(EaseOut easeOut, Tween<float, double> tween, double currentDuration)
-    {
-        throw new NotImplementedException();
-    }
-
-    public override double[] Interpolate(EaseOut easeOut, Tween<double, double> tween, double currentDuration)
-    {
-        throw new NotImplementedException();
-    }
-
-    public override decimal[] Interpolate(EaseOut easeOut, Tween<decimal, decimal> tween, double currentDuration)
-    {
-        throw new NotImplementedException();
-    }
-
-    public override double[] Interpolate(EaseInOut easeInOut, Tween<short, double> tween, double currentDuration)
-    {
-        throw new NotImplementedException();
-    }
-
-    public override double[] Interpolate(EaseInOut easeInOut, Tween<int, double> tween, double currentDuration)
-    {
-        throw new NotImplementedException();
-    }
-
-    public override double[] Interpolate(EaseInOut easeInOut, Tween<long, double> tween, double currentDuration)
-    {
-        throw new NotImplementedException();
-    }
-
-    public override double[] Interpolate(EaseInOut easeInOut, Tween<float, double> tween, double currentDuration)
-    {
-        throw new NotImplementedException();
-    }
-
-    public override double[] Interpolate(EaseInOut easeInOut, Tween<double, double> tween, double currentDuration)
-    {
-        throw new NotImplementedException();
-    }
-
-    public override decimal[] Interpolate(EaseInOut easeInOut, Tween<decimal, decimal> tween, double currentDuration)
-    {
-        throw new NotImplementedException();
+        double c4 = (2 * Math.PI) / 3;
+        double c5 = (2 * Math.PI) / 4.5;
+        EasingInFunction = (t) => 
+        { 
+            return t == 0
+              ? 0
+              : t == 1
+              ? 1
+              : -Math.Pow(2, 10 * t - 10) * Math.Sin((t * 10 - 10.75) * c4);
+        };
+        EasingOutFunction = (t) => 
+        { 
+            return t == 0
+              ? 0
+              : t == 1
+              ? 1
+              : Math.Pow(2, -10 * t) * Math.Sin((t * 10 - 0.75) * c4) + 1;
+        };
+        EasingInOutFunction = (t) =>
+        {
+            return t == 0
+              ? 0
+              : t == 1
+              ? 1
+              : t < 0.5
+              ? -(Math.Pow(2, 20 * t - 10) * Math.Sin((20 * t - 11.125) * c5)) / 2
+              : (Math.Pow(2, -20 * t + 10) * Math.Sin((20 * t - 11.125) * c5)) / 2 + 1;
+        };
     }
 }
