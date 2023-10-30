@@ -71,39 +71,39 @@ namespace GameMath.Core.Extensions
             return doubleArray;
         }
 
-        public static decimal[] ToDecimal(this short[] array)
+        public static decimal[] ToDecimal(this short[] array, decimal[] resultArray)
         {
-            var doubleArray = new decimal[array.Length];
-            for (int i = 0; i < array.Length; i++) doubleArray[i] = array[i];
-            return doubleArray;
+            if(resultArray == null) resultArray = new decimal[array.Length];
+            for (int i = 0; i < array.Length; i++) resultArray[i] = array[i];
+            return resultArray;
         }
 
-        public static decimal[] ToDecimal(this int[] array)
+        public static decimal[] ToDecimal(this int[] array, decimal[] resultArray)
         {
-            var doubleArray = new decimal[array.Length];
-            for (int i = 0; i < array.Length; i++) doubleArray[i] = array[i];
-            return doubleArray;
+            if (resultArray == null) resultArray = new decimal[array.Length];
+            for (int i = 0; i < array.Length; i++) resultArray[i] = array[i];
+            return resultArray;
         }
 
-        public static decimal[] ToDecimal(this long[] array)
+        public static decimal[] ToDecimal(this long[] array, decimal[] resultArray)
         {
-            var doubleArray = new decimal[array.Length];
-            for (int i = 0; i < array.Length; i++) doubleArray[i] = array[i];
-            return doubleArray;
+            if (resultArray == null) resultArray = new decimal[array.Length];
+            for (int i = 0; i < array.Length; i++) resultArray[i] = array[i];
+            return resultArray;
         }
 
-        public static decimal[] ToDecimal(this float[] array)
+        public static decimal[] ToDecimal(this float[] array, decimal[] resultArray)
         {
-            var doubleArray = new decimal[array.Length];
-            for (int i = 0; i < array.Length; i++) doubleArray[i] = Convert.ToDecimal(array[i]);
-            return doubleArray;
+            if (resultArray == null) resultArray = new decimal[array.Length];
+            for (int i = 0; i < array.Length; i++) resultArray[i] = Convert.ToDecimal(array[i]);
+            return resultArray;
         }
 
-        public static decimal[] ToDecimal(this double[] array)
+        public static decimal[] ToDecimal(this double[] array, decimal[] resultArray)
         {
-            var doubleArray = new decimal[array.Length];
-            for (int i = 0; i < array.Length; i++) doubleArray[i] = Convert.ToDecimal(array[i]);
-            return doubleArray;
+            if (resultArray == null) resultArray = new decimal[array.Length];
+            for (int i = 0; i < array.Length; i++) resultArray[i] = Convert.ToDecimal(array[i]);
+            return resultArray;
         }
     }
 }
