@@ -2,6 +2,7 @@
 using GameMath.Tweening.Eases;
 using GameMath.Tweening.Interfaces;
 using GameMath.Tweening.Interpolations;
+using System.Linq;
 
 namespace GameMath.Tweening.Tweens
 {
@@ -13,7 +14,8 @@ namespace GameMath.Tweening.Tweens
         IToCollection<TIn, TOut>,
         IFor<TIn, TOut>,
         IInterpolation<TIn, TOut>,
-        IEase<TIn, TOut>,
+        IEase<TIn, TOut>, 
+        ILoop<TIn, TOut>,
         IBuild<TIn, TOut>
     {
         public event ITween<TIn, TOut>.TweenEvent AnimationEnded;
@@ -28,7 +30,6 @@ namespace GameMath.Tweening.Tweens
         protected bool IsStarted = false;
         protected bool InvokeEvent = true;
         protected Interpolation<TOut> Interpolation;
-
 
         public void Start()
         {
@@ -115,12 +116,7 @@ namespace GameMath.Tweening.Tweens
             return this;
         }
 
-        public ITween<TIn, TOut> Build()
-        {
-            return this;
-        }
-
-        public IBuild<TIn, TOut> Linear()
+        public ILoop<TIn, TOut> Linear()
         {
             Interpolation = new Linear<TOut>();
             return this;
@@ -186,23 +182,57 @@ namespace GameMath.Tweening.Tweens
             return this;
         }
 
-        public IBuild<TIn, TOut> EaseIn()
+        public ILoop<TIn, TOut> EaseIn()
         {
             var easingInterpolation = Interpolation as EasingInterpolation<TOut>;
             easingInterpolation!.EasingFunction = new EaseIn<TOut>();
             return this;
         }
 
-        public IBuild<TIn, TOut> EaseOut()
+        public ILoop<TIn, TOut> EaseOut()
         {
             var easingInterpolation = Interpolation as EasingInterpolation<TOut>;
             easingInterpolation!.EasingFunction = new EaseOut<TOut>();
             return this;
         }
-        public IBuild<TIn, TOut> EaseInOut()
+        public ILoop<TIn, TOut> EaseInOut()
         {
             var easingInterpolation = Interpolation as EasingInterpolation<TOut>;
             easingInterpolation!.EasingFunction = new EaseInOut<TOut>();
+            return this;
+        }
+
+        public IBuild<TIn, TOut> Loop(int waitBeforeRestart)
+        {
+            if (waitBeforeRestart <= 0) { AnimationEnded += (tween) => { tween.Restart(); }; return this; }
+            AnimationEnded += (tween) =>
+            {
+                new Thread(() =>
+                {
+                    Thread.Sleep(waitBeforeRestart);
+                    tween.Restart();
+                }).Start();
+            };
+            return this;
+        }
+
+        public IBuild<TIn, TOut> LoopReverse(int waitBeforeRestart)
+        {
+            if(waitBeforeRestart <= 0) { AnimationEnded += (tween) => { tween.Reverse(); tween.Restart(); }; return this; }
+            AnimationEnded += (tween) => 
+            { 
+                new Thread(() => 
+                { 
+                    Thread.Sleep(waitBeforeRestart);
+                    tween.Reverse();
+                    tween.Restart(); 
+                }).Start();
+            };
+            return this;
+        }
+
+        public ITween<TIn, TOut> Build()
+        {
             return this;
         }
 

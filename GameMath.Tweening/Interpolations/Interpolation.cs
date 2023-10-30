@@ -4,9 +4,9 @@ namespace GameMath.Tweening.Interpolations;
 
 abstract class Interpolation<TOut>
 {
-    protected decimal[] StartValuesBuffer { get; set; }
-    protected decimal[] EndValuesBuffer { get; set; }
-    protected decimal[] ResultBuffer { get; set; }
+    protected decimal[] StartValuesBuffer;
+    protected decimal[] EndValuesBuffer;
+    protected decimal[] ResultBuffer;
 
     public abstract decimal[] Interpolate(Tween<short, TOut> tween, double currentDuration);
     public abstract decimal[] Interpolate(Tween<int, TOut> tween, double currentDuration);

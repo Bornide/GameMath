@@ -2,7 +2,7 @@
 
 public interface IInterpolation<TIn, TOut>
 {
-    IBuild<TIn, TOut> Linear();
+    ILoop<TIn, TOut> Linear();
     IEase<TIn, TOut> Sine();
     IEase<TIn, TOut> Quadratic();
     IEase<TIn, TOut> Cubic();

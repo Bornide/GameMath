@@ -2,7 +2,7 @@
 
 public interface IEase<TIn, TOut>
 {
-    IBuild<TIn, TOut> EaseIn();
-    IBuild<TIn, TOut> EaseOut();
-    IBuild<TIn, TOut> EaseInOut();
+    ILoop<TIn, TOut> EaseIn();
+    ILoop<TIn, TOut> EaseOut();
+    ILoop<TIn, TOut> EaseInOut();
 }

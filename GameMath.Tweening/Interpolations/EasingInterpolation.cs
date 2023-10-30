@@ -9,9 +9,9 @@ abstract class EasingInterpolation<TOut> : Interpolation<TOut>
     public Ease<TOut> EasingFunction { get; set; }
     protected virtual Func<double, double> EasingInFunction { get; set; }
     protected virtual Func<double, double> EasingOutFunction { get; set; }
-    protected virtual Func<double, double> EasingInOutFunction { get; set; }    
+    protected virtual Func<double, double> EasingInOutFunction { get; set; }
 
-    public override decimal[] Interpolate(Tween<short, TOut> tween, double currentDuration) 
+    public override decimal[] Interpolate(Tween<short, TOut> tween, double currentDuration)
         => EasingFunction.Interpolate(this, tween, currentDuration);
 
     public override decimal[] Interpolate(Tween<int, TOut> tween, double currentDuration)

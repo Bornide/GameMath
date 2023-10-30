@@ -8,7 +8,7 @@ namespace GameMath.Tweening
 {
     public interface ITween<TIn, TOut>
     {
-        public delegate void TweenEvent(ITween<TIn, TOut> tween);
+        delegate void TweenEvent(ITween<TIn, TOut> tween);
         event TweenEvent AnimationEnded;
         void Start();
         TOut Update(double currentTime);
