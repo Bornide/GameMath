@@ -7,11 +7,10 @@ namespace GameMath.Tweening.Tweens
 {
     abstract class Tween<TIn, TOut> : ITween<TIn, TOut>, 
         IFrom<TIn, TOut>,
-        IFrom2D<TIn, TOut>,
-        IFrom3D<TIn, TOut>,
         ITo<TIn, TOut>,
         ITo2D<TIn, TOut>,
         ITo3D<TIn, TOut>,
+        IToCollection<TIn, TOut>,
         IFor<TIn, TOut>,
         IInterpolation<TIn, TOut>,
         IEase<TIn, TOut>,
@@ -78,6 +77,12 @@ namespace GameMath.Tweening.Tweens
             return this;
         }
 
+        public IToCollection<TIn, TOut> From(params TIn[] startValues)
+        {
+            StartValues = startValues;
+            return this;
+        }
+
         public IFor<TIn, TOut> To(TIn endValue)
         {
             EndValues = new TIn[] { endValue };
@@ -93,6 +98,14 @@ namespace GameMath.Tweening.Tweens
         public IFor<TIn, TOut> To(TIn x, TIn y, TIn z)
         {
             EndValues = new TIn[] { x, y, z };
+            return this;
+        }
+
+        public IFor<TIn, TOut> To(params TIn[] endValues)
+        {
+            if (endValues.Length != StartValues.Length)
+                throw new ArgumentException("Invalid endValues count.");
+            EndValues = endValues;
             return this;
         }
 

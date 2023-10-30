@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace GameMath.Tweening.Interfaces
 {
-    public interface IFrom2D<TIn, TOut>
+    public interface IToCollection<TIn, TOut>
     {
-        ITo2D<TIn, TOut> From(TIn x, TIn y);
+        IFor<TIn, TOut> To(params TIn[] endValues);
     }
 }

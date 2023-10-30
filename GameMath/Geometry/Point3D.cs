@@ -4,17 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameMath.Core
+namespace GameMath.Core.Geometry
 {
-    public struct Point2D<T>
+    public struct Point3D<T>
     {
         public T X { get; set; }
         public T Y { get; set; }
+        public T Z { get; set; }
 
-        public Point2D(T x, T y)
+        public Point3D(T x, T y, T z)
         {
             X = x;
             Y = y;
+            Z = z;
         }
     }
 }

@@ -1,9 +1,9 @@
 ﻿using GameMath.Tweening;
-using GameMath.Core;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using GameMath.Core.Extensions;
+using GameMath.Core.Geometry;
 
 namespace GameMath.Demo
 {

@@ -1,7 +1,6 @@
-﻿
-namespace GameMath.Core
+﻿namespace GameMath.Core.Geometry
 {
-    struct Point
+    internal struct Point
     {
         private readonly int _x;
         private readonly int _y;

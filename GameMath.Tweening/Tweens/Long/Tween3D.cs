@@ -1,4 +1,4 @@
-﻿using GameMath.Core;
+﻿using GameMath.Core.Geometry;
 using System;
 using System.Collections.Generic;
 using System.Linq;
