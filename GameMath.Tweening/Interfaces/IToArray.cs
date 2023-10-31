@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameMath.Tweening.Interfaces
 {
-    public interface IToCollection<TIn, TOut>
+    public interface IToArray<TIn, TOut>
     {
         IFor<TIn, TOut> To(params TIn[] endValues);
     }

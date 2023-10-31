@@ -18,6 +18,6 @@ namespace GameMath.Tweening.Interfaces
         ITo2D<TIn, TOut> From(System.Drawing.PointF startValue);
         ITo3D<TIn, TOut> From(TIn x, TIn y, TIn z);
         ITo3D<TIn, TOut> From(Point3D<TIn> startValue);
-        IToCollection<TIn, TOut> From(params TIn[] startValues);
+        IToArray<TIn, TOut> From(params TIn[] startValues);
     }
 }

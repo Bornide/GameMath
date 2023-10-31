@@ -10,7 +10,7 @@ abstract class Tween<TIn, TOut> : ITween<TIn, TOut>,
     ITo<TIn, TOut>,
     ITo2D<TIn, TOut>,
     ITo3D<TIn, TOut>,
-    IToCollection<TIn, TOut>,
+    IToArray<TIn, TOut>,
     IFor<TIn, TOut>,
     IInterpolation<TIn, TOut>,
     IEase<TIn, TOut>, 
@@ -107,7 +107,7 @@ abstract class Tween<TIn, TOut> : ITween<TIn, TOut>,
         return this;
     }
 
-    public IToCollection<TIn, TOut> From(params TIn[] startValues)
+    public IToArray<TIn, TOut> From(params TIn[] startValues)
     {
         StartValues = startValues;
         return this;

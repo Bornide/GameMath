@@ -43,11 +43,11 @@ namespace GameMath.Tweening
         public static ITo3D<double, Point3D<decimal>> From(Point3D<double> startValue) => new Tweens.Tween3D<double>().From(startValue);
         public static ITo3D<decimal, Point3D<decimal>> From(Point3D<decimal> startValue) => new Tweens.Tween3D<decimal>().From(startValue);
 
-        public static IToCollection<short, decimal[]> From(params short[] startValues) => new Tweens.TweenCollection<short>().From(startValues);
-        public static IToCollection<int, decimal[]> From(params int[] startValues) => new Tweens.TweenCollection<int>().From(startValues);
-        public static IToCollection<long, decimal[]> From(params long[] startValues) => new Tweens.TweenCollection<long>().From(startValues);
-        public static IToCollection<float, decimal[]> From(params float[] startValues) => new Tweens.TweenCollection<float>().From(startValues);
-        public static IToCollection<double, decimal[]> From(params double[] startValues) => new Tweens.TweenCollection<double>().From(startValues);
-        public static IToCollection<decimal, decimal[]> From(params decimal[] startValues) => new Tweens.TweenCollection<decimal>().From(startValues);
+        public static IToArray<short, decimal[]> From(params short[] startValues) => new Tweens.TweenArray<short>().From(startValues);
+        public static IToArray<int, decimal[]> From(params int[] startValues) => new Tweens.TweenArray<int>().From(startValues);
+        public static IToArray<long, decimal[]> From(params long[] startValues) => new Tweens.TweenArray<long>().From(startValues);
+        public static IToArray<float, decimal[]> From(params float[] startValues) => new Tweens.TweenArray<float>().From(startValues);
+        public static IToArray<double, decimal[]> From(params double[] startValues) => new Tweens.TweenArray<double>().From(startValues);
+        public static IToArray<decimal, decimal[]> From(params decimal[] startValues) => new Tweens.TweenArray<decimal>().From(startValues);
     }
 }

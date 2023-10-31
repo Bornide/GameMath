@@ -86,5 +86,35 @@ namespace GameMath.Core.Extensions
             result.Y = Convert.ToDouble(point2D.Y);
             result.Z = Convert.ToDouble(point2D.Z);
         }
+
+        public static void OutputTo(this decimal[] array, ref short[] result)
+        {
+            if (array.Length != result.Length) throw new ArgumentException("The size of the result array doesn't match the size of the input");
+            for (int i = 0; i < array.Length; i++) result[i] = Convert.ToInt16(array[i]);
+        }
+
+        public static void OutputTo(this decimal[] array, ref int[] result)
+        {
+            if (array.Length != result.Length) throw new ArgumentException("The size of the result array doesn't match the size of the input");
+            for (int i = 0; i < array.Length; i++) result[i] = Convert.ToInt32(array[i]);
+        }
+
+        public static void OutputTo(this decimal[] array, ref long[] result)
+        {
+            if (array.Length != result.Length) throw new ArgumentException("The size of the result array doesn't match the size of the input");
+            for (int i = 0; i < array.Length; i++) result[i] = Convert.ToInt64(array[i]);
+        }
+
+        public static void OutputTo(this decimal[] array, ref float[] result)
+        {
+            if (array.Length != result.Length) throw new ArgumentException("The size of the result array doesn't match the size of the input");
+            for (int i = 0; i < array.Length; i++) result[i] = (float)array[i];
+        }
+
+        public static void OutputTo(this decimal[] array, ref double[] result)
+        {
+            if (array.Length != result.Length) throw new ArgumentException("The size of the result array doesn't match the size of the input");
+            for (int i = 0; i < array.Length; i++) result[i] = Convert.ToDouble(array[i]);
+        }
     }
 }
