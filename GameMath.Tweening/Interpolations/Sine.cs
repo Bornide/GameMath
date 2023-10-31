@@ -1,15 +1,6 @@
-﻿using GameMath.Core.Extensions;
-using GameMath.Tweening.Eases;
-using GameMath.Tweening.Tweens;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace GameMath.Tweening.Interpolations;
 
-namespace GameMath.Tweening.Interpolations;
-
-class Sine<TOut> : EasingInterpolation<TOut>
+class Sine<TIn, TOut> : EasingInterpolation<TIn, TOut>
 {
     public Sine()
     {

@@ -1,9 +1,6 @@
-﻿using GameMath.Tweening.Eases;
-using GameMath.Tweening.Tweens;
+﻿namespace GameMath.Tweening.Interpolations;
 
-namespace GameMath.Tweening.Interpolations;
-
-class Cubic<TOut> : EasingInterpolation<TOut>
+class Cubic<TIn, TOut> : EasingInterpolation<TIn, TOut>
 {
     public Cubic()
     {

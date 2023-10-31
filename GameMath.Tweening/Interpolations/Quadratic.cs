@@ -1,10 +1,6 @@
-﻿using GameMath.Core.Extensions;
-using GameMath.Tweening.Eases;
-using GameMath.Tweening.Tweens;
+﻿namespace GameMath.Tweening.Interpolations;
 
-namespace GameMath.Tweening.Interpolations;
-
-class Quadratic<TOut> : EasingInterpolation<TOut>
+class Quadratic<TIn, TOut> : EasingInterpolation<TIn, TOut>
 {
     public Quadratic()
     {

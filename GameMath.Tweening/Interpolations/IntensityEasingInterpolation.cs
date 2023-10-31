@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace GameMath.Tweening.Interpolations
 {
-    abstract class IntensityEasingInterpolation<TOut> : EasingInterpolation<TOut>
+    abstract class IntensityEasingInterpolation<TIn, TOut> : EasingInterpolation<TIn, TOut>
     {
         [Range(0, 20)]
         protected double Intensity { get; set; } = 1;

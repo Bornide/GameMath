@@ -1,10 +1,6 @@
-﻿using GameMath.Core.Extensions;
-using GameMath.Tweening.Eases;
-using GameMath.Tweening.Tweens;
+﻿namespace GameMath.Tweening.Interpolations;
 
-namespace GameMath.Tweening.Interpolations;
-
-class Back<TOut> : IntensityEasingInterpolation<TOut>
+class Back<TIn, TOut> : IntensityEasingInterpolation<TIn, TOut>
 {
     public Back(double intensity)
     {

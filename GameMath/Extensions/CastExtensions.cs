@@ -15,7 +15,6 @@ namespace GameMath.Core.Extensions
         public static float ToFloat(this decimal value) => (float)value;
         public static double ToDouble(this decimal value) => Convert.ToDouble(value);
 
-
         public static Point2D<short> ToShort(this Point2D<decimal> point2D) => new Point2D<short> { X = Convert.ToInt16(point2D.X), Y = Convert.ToInt16(point2D.Y) };
         public static Point2D<int> ToInt(this Point2D<decimal> point2D) => new Point2D<int> { X = Convert.ToInt32(point2D.X), Y = Convert.ToInt32(point2D.Y) };
         public static System.Drawing.Point ToPoint(this Point2D<decimal> point2D) => new System.Drawing.Point { X = Convert.ToInt32(point2D.X), Y = Convert.ToInt32(point2D.Y) };
@@ -70,51 +69,6 @@ namespace GameMath.Core.Extensions
             var doubleArray = new double[array.Length];
             for (int i = 0; i < array.Length; i++) doubleArray[i] = Convert.ToDouble(array[i]);
             return doubleArray;
-        }
-
-        public static decimal[] ToDecimal(this short[] array) { var resultArray = new decimal[array.Length]; return array.ToDecimal(resultArray); }
-        public static decimal[] ToDecimal(this short[] array, decimal[] resultArray)
-        {
-            if(resultArray == null) resultArray = new decimal[array.Length];
-            if (resultArray.Length != array.Length) throw new ArgumentException("ResultArray doesn't match the size of the array");
-            for (int i = 0; i < array.Length; i++) resultArray[i] = array[i];
-            return resultArray;
-        }
-
-        public static decimal[] ToDecimal(this int[] array) { var resultArray = new decimal[array.Length]; return array.ToDecimal(resultArray); }
-        public static decimal[] ToDecimal(this int[] array, decimal[] resultArray)
-        {
-            if (resultArray == null) resultArray = new decimal[array.Length];
-            if (resultArray.Length != array.Length) throw new ArgumentException("ResultArray doesn't match the size of the array");
-            for (int i = 0; i < array.Length; i++) resultArray[i] = array[i];
-            return resultArray;
-        }
-
-        public static decimal[] ToDecimal(this long[] array) { var resultArray = new decimal[array.Length]; return array.ToDecimal(resultArray); }
-        public static decimal[] ToDecimal(this long[] array, decimal[] resultArray)
-        {
-            if (resultArray == null) resultArray = new decimal[array.Length];
-            if (resultArray.Length != array.Length) throw new ArgumentException("ResultArray doesn't match the size of the array");
-            for (int i = 0; i < array.Length; i++) resultArray[i] = array[i];
-            return resultArray;
-        }
-
-        public static decimal[] ToDecimal(this float[] array) { var resultArray = new decimal[array.Length]; return array.ToDecimal(resultArray); }
-        public static decimal[] ToDecimal(this float[] array, decimal[] resultArray)
-        {
-            if (resultArray == null) resultArray = new decimal[array.Length];
-            if (resultArray.Length != array.Length) throw new ArgumentException("ResultArray doesn't match the size of the array");
-            for (int i = 0; i < array.Length; i++) resultArray[i] = Convert.ToDecimal(array[i]);
-            return resultArray;
-        }
-
-        public static decimal[] ToDecimal(this double[] array) { var resultArray = new decimal[array.Length]; return array.ToDecimal(resultArray); }
-        public static decimal[] ToDecimal(this double[] array, decimal[] resultArray)
-        {
-            if (resultArray == null) resultArray = new decimal[array.Length];
-            if (resultArray.Length != array.Length) throw new ArgumentException("ResultArray doesn't match the size of the array");
-            for (int i = 0; i < array.Length; i++) resultArray[i] = Convert.ToDecimal(array[i]);
-            return resultArray;
         }
     }
 }

@@ -1,14 +1,6 @@
-﻿using GameMath.Tweening.Eases;
-using GameMath.Tweening.Tweens;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace GameMath.Tweening.Interpolations;
 
-namespace GameMath.Tweening.Interpolations;
-
-class Bounce<TOut> : IntensityEasingInterpolation<TOut>
+class Bounce<TIn, TOut> : IntensityEasingInterpolation<TIn, TOut>
 {
     public Bounce(double intensity)
     {

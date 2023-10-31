@@ -1,9 +1,6 @@
-﻿using GameMath.Tweening.Eases;
-using GameMath.Tweening.Tweens;
+﻿namespace GameMath.Tweening.Interpolations;
 
-namespace GameMath.Tweening.Interpolations;
-
-class Elastic<TOut> : IntensityEasingInterpolation<TOut>
+class Elastic<TIn, TOut> : IntensityEasingInterpolation<TIn, TOut>
 {
     public Elastic(double intensity)
     {
