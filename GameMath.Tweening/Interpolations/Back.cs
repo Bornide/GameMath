@@ -2,20 +2,23 @@
 
 class Back<TIn, TOut> : IntensityEasingInterpolation<TIn, TOut>
 {
+    private double _c1, _c2, _c3;
+
     public Back(double intensity)
     {
         SetIntensity(intensity);
 
-        double c1 = 1.70158 * Intensity;
-        double c2 = c1 * 1.525;
-        double c3 = c1 + 1;
-        EasingInFunction = (t) => { return c3 * t * t * t - c1 * t * t; };
-        EasingOutFunction = (t) => { return 1 + c3 * Math.Pow(t - 1, 3) + c1 * Math.Pow(t - 1, 2); };
-        EasingInOutFunction = (t) => 
-        { 
-            return t > 0.5 ?
-            (Math.Pow(2 * t - 2, 2) * ((c2 + 1) * (t * 2 - 2) + c2) + 2) / 2 :
-            (Math.Pow(2 * t, 2) * ((c2 + 1) * 2 * t - c2)) / 2;
-        };
+        _c1 = 1.70158 * Intensity;
+        _c2 = _c1 * 1.525;
+        _c3 = _c1 + 1;
     }
+
+    protected override Func<double, double> EasingInFunction => (t) => { return _c3 * t * t * t - _c1 * t * t; };
+    protected override Func<double, double> EasingOutFunction => (t) => { return 1 + _c3 * Math.Pow(t - 1, 3) + _c1 * Math.Pow(t - 1, 2); };
+    protected override Func<double, double> EasingInOutFunction => (t) =>
+    {
+        return t > 0.5
+            ? (Math.Pow(2 * t - 2, 2) * ((_c2 + 1) * (t * 2 - 2) + _c2) + 2) / 2
+            : (Math.Pow(2 * t, 2) * ((_c2 + 1) * 2 * t - _c2)) / 2;
+    };
 }

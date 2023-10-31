@@ -9,6 +9,6 @@ namespace GameMath.Tweening.Interfaces;
 public interface ILoop<TIn, TOut>
 {
     IBuild<TIn, TOut> Loop(uint delay = 0);
-    IBuild<TIn, TOut> LoopReverse(uint delay = 0);
+    IBuild<TIn, TOut> LoopAlternate(uint delay = 0);
     ITween<TIn, TOut> Build();
 }

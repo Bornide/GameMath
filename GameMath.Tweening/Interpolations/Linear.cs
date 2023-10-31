@@ -9,7 +9,7 @@ class Linear<TIn, TOut> : Interpolation<TIn, TOut>
 
     private decimal[] Interpolate(TIn[] startValues, TIn[] endValues, double currentDuration, double totalDuration)
     {
-        if(ResultBuffer == null) ResultBuffer = new decimal[startValues.Length];
+        ResultBuffer ??= new decimal[startValues.Length];
         for (int i = 0; i < startValues.Length; i++)
             ResultBuffer[i] = (Convert.ToDecimal(endValues[i]) - Convert.ToDecimal(startValues[i])) * 
                 Convert.ToDecimal(currentDuration / totalDuration) +

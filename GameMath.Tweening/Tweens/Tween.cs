@@ -164,7 +164,7 @@ abstract class Tween<TIn, TOut> : ITween<TIn, TOut>,
     public IFor<TIn, TOut> To(params TIn[] endValues)
     {
         if (endValues.Length != StartValues.Length)
-            throw new ArgumentException("Invalid endValues count.");
+            throw new ArgumentException("The number of end values doesn't match the number of start values");
         EndValues = endValues;
         return this;
     }
@@ -244,20 +244,20 @@ abstract class Tween<TIn, TOut> : ITween<TIn, TOut>,
     public ILoop<TIn, TOut> EaseIn()
     {
         var easingInterpolation = Interpolation as EasingInterpolation<TIn, TOut>;
-        easingInterpolation!.EasingFunction = Core.Enums.Ease.EaseIn;
+        easingInterpolation!.EasingType = Core.Enums.Ease.EaseIn;
         return this;
     }
 
     public ILoop<TIn, TOut> EaseOut()
     {
         var easingInterpolation = Interpolation as EasingInterpolation<TIn, TOut>;
-        easingInterpolation!.EasingFunction = Core.Enums.Ease.EaseOut;
+        easingInterpolation!.EasingType = Core.Enums.Ease.EaseOut;
         return this;
     }
     public ILoop<TIn, TOut> EaseInOut()
     {
         var easingInterpolation = Interpolation as EasingInterpolation<TIn, TOut>;
-        easingInterpolation!.EasingFunction = Core.Enums.Ease.EaseInOut;
+        easingInterpolation!.EasingType = Core.Enums.Ease.EaseInOut;
         return this;
     }
 
@@ -275,7 +275,7 @@ abstract class Tween<TIn, TOut> : ITween<TIn, TOut>,
         return this;
     }
 
-    public IBuild<TIn, TOut> LoopReverse(uint delay)
+    public IBuild<TIn, TOut> LoopAlternate(uint delay)
     {
         if(delay == 0) { AnimationEnded += (tween) => { tween.Reverse(); tween.Restart(); }; return this; }
         AnimationEnded += (tween) => 

@@ -25,7 +25,7 @@ namespace GameMath.Demo
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
-            _elasticTween = TweenBuilder.From(100).To(600).For(2000f).Elastic().EaseOut().LoopReverse().Build();
+            _elasticTween = TweenBuilder.From(100).To(600).For(2000f).Elastic().EaseOut().LoopAlternate().Build();
             _bounceTween = TweenBuilder.From(100f).To(600f).For(2000f).Bounce().EaseOut().Build();
             _backTween = TweenBuilder.From(new Microsoft.Xna.Framework.Point() { X = 100, Y = 400 })
                 .To(new Microsoft.Xna.Framework.Point() { X = 600, Y = 400 }).For(1500f).Back(1.5).EaseInOut().Build();
