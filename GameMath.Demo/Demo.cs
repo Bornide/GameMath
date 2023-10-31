@@ -63,7 +63,7 @@ namespace GameMath.Demo
 
             _elasticX = _elasticTween.Update(gameTime.ElapsedGameTime.Milliseconds).ToInt();
             _bounceX = _bounceTween.Update(gameTime.ElapsedGameTime.Milliseconds).ToInt();
-            _backPoint = _backTween.Update(gameTime.ElapsedGameTime.Milliseconds).ToInt();
+            _backTween.Update(gameTime.ElapsedGameTime.Milliseconds).OutputTo(ref _backPoint);
 
             base.Update(gameTime);
         }

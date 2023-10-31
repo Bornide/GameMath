@@ -35,10 +35,9 @@ namespace GameMath.Core.Extensions
         public static Point3D<double> ToDouble(this Point3D<decimal> point3D)
             => new Point3D<double> { X = Convert.ToDouble(point3D.X), Y = Convert.ToDouble(point3D.Y), Z = Convert.ToDouble(point3D.Z) };
 
-        public static short[] ToShort(this decimal[] array, ref short[] resultArray)
+        public static short[] ToShort(this decimal[] array)
         {
-            if (resultArray == null) resultArray = new short[array.Length];
-            if (resultArray.Length != array.Length) throw new ArgumentException("ResultArray doesn't match the size of the array");
+            var resultArray = new short[array.Length];
             for (int i = 0; i < array.Length; i++) resultArray[i] = Convert.ToInt16(array[i]);
             return resultArray;
         }
