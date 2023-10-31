@@ -14,7 +14,7 @@ namespace GameMath.Demo
         private Texture2D _rectangle;
         private int _elasticX;
         private int _bounceX;
-        private Point2D<int> _backPoint;
+        private Microsoft.Xna.Framework.Point _backPoint;
         private ITween<int, decimal> _elasticTween;
         private ITween<float, decimal> _bounceTween;
         private ITween<int, Point2D<decimal>> _backTween;
@@ -27,7 +27,7 @@ namespace GameMath.Demo
 
             _elasticTween = TweenBuilder.From(100).To(600).For(2000f).Elastic().EaseOut().LoopAlternate().Build();
             _bounceTween = TweenBuilder.From(100f).To(600f).For(2000f).Bounce().EaseOut().Build();
-            _backTween = TweenBuilder.From(new Microsoft.Xna.Framework.Point() { X = 100, Y = 400 })
+            _backTween = TweenBuilder.From(new Microsoft.Xna.Framework.Point() { X = 100, Y = 300 })
                 .To(new Microsoft.Xna.Framework.Point() { X = 600, Y = 400 }).For(1500f).Back(1.5).EaseInOut().Build();
         }
 
