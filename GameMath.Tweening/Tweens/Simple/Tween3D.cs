@@ -1,8 +1,8 @@
 ﻿using GameMath.Core.Geometry;
 
-namespace GameMath.Tweening.Tweens;
+namespace GameMath.Tweening.Tweens.Simple;
 
-class Tween3D<TIn> : Tween<TIn, Point3D<decimal>>
+class Tween3D<TIn> : TweenSimple<TIn, Point3D<decimal>>
 {
     public override Point3D<decimal> Update(double currentTime)
     {

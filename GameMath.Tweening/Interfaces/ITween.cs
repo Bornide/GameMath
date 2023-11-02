@@ -9,7 +9,7 @@ namespace GameMath.Tweening
     public interface ITween<TIn, TOut>
     {
         delegate void TweenEvent(ITween<TIn, TOut> tween);
-        event TweenEvent AnimationEnded;
+        event TweenEvent? AnimationEnded;
         /// <summary>
         /// Start the tween from current time elapsed
         /// </summary>

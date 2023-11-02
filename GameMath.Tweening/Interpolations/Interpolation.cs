@@ -6,5 +6,5 @@ abstract class Interpolation<TIn, TOut>
 {
     protected decimal[]? ResultBuffer;
 
-    public abstract decimal[] Interpolate(Tween<TIn, TOut> tween, double currentDuration);
+    public abstract decimal[] Interpolate(TweenBase<TIn, TOut> tween, double currentDuration);
 }

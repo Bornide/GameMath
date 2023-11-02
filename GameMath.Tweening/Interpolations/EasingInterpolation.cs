@@ -10,7 +10,7 @@ abstract class EasingInterpolation<TIn, TOut> : Interpolation<TIn, TOut>
     protected abstract Func<double, double> EasingOutFunction { get; }
     protected abstract Func<double, double> EasingInOutFunction { get; }
 
-    public override decimal[] Interpolate(Tween<TIn, TOut> tween, double currentDuration)
+    public override decimal[] Interpolate(TweenBase<TIn, TOut> tween, double currentDuration)
     {
         switch (EasingType)
         {

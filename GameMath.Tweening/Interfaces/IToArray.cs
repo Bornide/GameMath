@@ -8,6 +8,7 @@ namespace GameMath.Tweening.Interfaces
 {
     public interface IToArray<TIn, TOut>
     {
+        IFor<TIn, TOut> To(ICollection<TIn> endValues);
         IFor<TIn, TOut> To(params TIn[] endValues);
     }
 }

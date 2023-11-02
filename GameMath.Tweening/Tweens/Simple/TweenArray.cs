@@ -1,8 +1,8 @@
 ﻿using GameMath.Tweening.Interpolations;
 
-namespace GameMath.Tweening.Tweens;
+namespace GameMath.Tweening.Tweens.Simple;
 
-class TweenArray<TIn> : Tween<TIn, decimal[]>
+class TweenArray<TIn> : TweenSimple<TIn, decimal[]>
 {
     public override decimal[] Update(double currentTime)
     {
