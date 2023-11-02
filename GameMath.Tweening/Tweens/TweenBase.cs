@@ -202,11 +202,16 @@ abstract class TweenBase<TIn, TOut> : ITween<TIn, TOut>,
         IsStarted = false;
         CurrentDuration = TotalDuration;
 
-        if (triggerAnimationEnded && InvokeEvent)
+        if (triggerAnimationEnded) OnAnimationEnded();
+        return CurrentDuration;
+    }
+
+    protected void OnAnimationEnded()
+    {
+        if (InvokeEvent)
         {
             InvokeEvent = false;
             AnimationEnded?.Invoke(this);
         }
-        return CurrentDuration;
     }
 }
