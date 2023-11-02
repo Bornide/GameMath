@@ -35,11 +35,16 @@ abstract class Tween<TIn, TOut> : ITween<TIn, TOut>,
         IsStarted = true;
     }
 
-    public void Restart()
+    public void Reset()
     {
-        IsStarted = true;
         InvokeEvent = true;
         CurrentDuration = 0;
+    }
+
+    public void Restart()
+    {
+        Reset();
+        Start();
     }
 
     public void Reverse()
@@ -49,12 +54,18 @@ abstract class Tween<TIn, TOut> : ITween<TIn, TOut>,
         EndValues = bufferValue;
     }
 
-    public void Stop()
+    public void Pause()
     {
         IsStarted = false;
     }
 
-    public void Toggle()
+    public void Stop()
+    {
+        Reset();
+        IsStarted = false;
+    }
+
+    public void ToggleState()
     {
         IsStarted = !IsStarted;
     }
