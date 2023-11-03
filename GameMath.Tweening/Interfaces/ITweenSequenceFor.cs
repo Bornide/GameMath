@@ -16,5 +16,7 @@ namespace GameMath.Tweening.Interfaces
         ITweenSequenceFor<TIn, TOut> Add(System.Drawing.PointF value);
         ITweenSequenceFor<TIn, TOut> Add(Point3D<TIn> value);
         IInterpolation<TIn, TOut> For(double duration);
+        IInterpolation<TIn, TOut> For(params double[] durations);
+        IInterpolation<TIn, TOut> For(ICollection<double> durations);
     }
 }

@@ -5,8 +5,7 @@ using System.Drawing;
 
 namespace GameMath.Tweening.Tweens;
 
-abstract class TweenBase<TIn, TOut> : ITween<TIn, TOut>, 
-    IFor<TIn, TOut>,
+abstract class TweenBase<TIn, TOut> : ITween<TIn, TOut>,
     IInterpolation<TIn, TOut>,
     IEase<TIn, TOut>, 
     ILoop<TIn, TOut>,
@@ -61,12 +60,6 @@ abstract class TweenBase<TIn, TOut> : ITween<TIn, TOut>,
     public void ToggleState()
     {
         IsStarted = !IsStarted;
-    }
-
-    public IInterpolation<TIn, TOut> For(double duration)
-    {
-        TotalDuration = duration;
-        return this;
     }
 
     public ILoop<TIn, TOut> Linear()

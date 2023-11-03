@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 namespace GameMath.Tweening.Tweens.Simple;
 
 abstract class TweenSimple<TIn, TOut> : TweenBase<TIn, TOut>,
+    IFor<TIn, TOut>,
     IFrom<TIn, TOut>,
     ITo<TIn, TOut>,
     ITo2D<TIn, TOut>,
@@ -140,6 +141,12 @@ abstract class TweenSimple<TIn, TOut> : TweenBase<TIn, TOut>,
         if (endValues.Length != StartValues.Length)
             throw new ArgumentException("The number of end values doesn't match the number of start values");
         EndValues = endValues;
+        return this;
+    }
+
+    public IInterpolation<TIn, TOut> For(double duration)
+    {
+        TotalDuration = duration;
         return this;
     }
 }
