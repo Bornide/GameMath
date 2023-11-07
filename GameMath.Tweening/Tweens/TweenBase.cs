@@ -16,11 +16,11 @@ abstract class TweenBase<TIn, TOut> : ITween<TIn, TOut>,
     public double TotalDuration { get; protected set; }
     public TIn[] StartValues { get; protected set; }
     public TIn[] EndValues { get; protected set; }
+    public Interpolation<TIn, TOut> Interpolation;
 
     protected bool IsBuilded = false;
     protected bool IsStarted = false;
     protected bool InvokeEvent = true;
-    protected Interpolation<TIn, TOut> Interpolation;
 
     public void Start()
     {

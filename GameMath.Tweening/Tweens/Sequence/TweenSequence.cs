@@ -20,6 +20,7 @@ abstract class TweenSequence<TIn, TOut> : TweenBase<TIn, TOut>,
     protected int CurrentStepIndex;
     protected double[] TotalDurations { get; private set; }
     protected List<TIn[]> Values { get; private set; } = new List<TIn[]>();
+    protected List<ITween<TIn, TOut>> Tweens { get; set; } = new List<ITween<TIn, TOut>>();
 
     public override void Reverse()
     {
@@ -132,14 +133,6 @@ abstract class TweenSequence<TIn, TOut> : TweenBase<TIn, TOut>,
     public IInterpolation<TIn, TOut> For(ICollection<double> durations)
     {
         return For(durations.ToArray());
-    }
-
-    public override ITween<TIn, TOut> Build()
-    {
-        TotalDuration = TotalDurations[CurrentStepIndex];
-        StartValues = Values[CurrentStepIndex];
-        EndValues = Values[CurrentStepIndex + 1];
-        return base.Build();
     }
 
     public override TOut Update(double currentTime)
