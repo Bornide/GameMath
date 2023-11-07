@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace GameMath.Tweening.Interfaces
 {
-    public interface ITweenSequenceFor<TIn, TOut>
+    public interface ITweenSequence3DFor<TIn, TOut>
     {
-        ITweenSequenceFor<TIn, TOut> Add(TIn value);
+        ITweenSequence3DFor<TIn, TOut> Add(Point3D<TIn> value);
         IInterpolation<TIn, TOut> For(double duration);
         IInterpolation<TIn, TOut> For(params double[] durations);
         IInterpolation<TIn, TOut> For(ICollection<double> durations);

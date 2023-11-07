@@ -10,12 +10,12 @@ namespace GameMath.Tweening.Interfaces
 {
     public interface ITweenSequence<TIn, TOut>
     {
-        ITweenSequenceAdd<TIn, TOut> Add(TIn value);
-        ITweenSequenceAdd<TIn, TOut> Add(Point2D<TIn> value);
-        ITweenSequenceAdd<TIn, TOut> Add(System.Drawing.Point value);
-        ITweenSequenceAdd<TIn, TOut> Add(Microsoft.Xna.Framework.Point value);
-        ITweenSequenceAdd<TIn, TOut> Add(System.Drawing.PointF value);
-        ITweenSequenceAdd<TIn, TOut> Add(Point3D<TIn> value);
+        ITweenSequenceFor<TIn, TOut> Add(TIn value);
+        ITweenSequence2DFor<TIn, TOut> Add(Point2D<TIn> value);
+        ITweenSequence2DFor<TIn, TOut> Add(System.Drawing.Point value);
+        ITweenSequence2DFor<TIn, TOut> Add(Microsoft.Xna.Framework.Point value);
+        ITweenSequence2DFor<TIn, TOut> Add(System.Drawing.PointF value);
+        ITweenSequence3DFor<TIn, TOut> Add(Point3D<TIn> value);
         IForSequence<TIn, TOut> AddRange(ICollection<TIn> values);
         IForSequence<TIn, TOut> AddRange(ICollection<Point2D<TIn>> values);
         IForSequence<TIn, TOut> AddRange(ICollection<System.Drawing.Point> values);

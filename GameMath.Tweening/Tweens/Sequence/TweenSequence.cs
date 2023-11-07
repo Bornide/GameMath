@@ -13,8 +13,9 @@ namespace GameMath.Tweening.Tweens.Sequence;
 abstract class TweenSequence<TIn, TOut> : TweenBase<TIn, TOut>,
     IForSequence<TIn, TOut>,
     ITweenSequence<TIn, TOut>,
-    ITweenSequenceAdd<TIn, TOut>,
-    ITweenSequenceFor<TIn, TOut>
+    ITweenSequenceFor<TIn, TOut>,
+    ITweenSequence2DFor<TIn, TOut>,
+    ITweenSequence3DFor<TIn, TOut>
 {
     protected int CurrentStepIndex;
     protected double[] TotalDurations { get; private set; }
@@ -41,109 +42,37 @@ abstract class TweenSequence<TIn, TOut> : TweenBase<TIn, TOut>,
         base.Reset();
     }
 
-    public ITweenSequenceAdd<TIn, TOut> Add(TIn value)
+    public ITweenSequenceFor<TIn, TOut> Add(TIn value)
     {
         Values.Add(new TIn[]{ value });
         return this;
     }
 
-    public ITweenSequenceAdd<TIn, TOut> Add(Point2D<TIn> value)
+    public ITweenSequence2DFor<TIn, TOut> Add(Point2D<TIn> value)
     {
         Values.Add(new TIn[] { value.X, value.Y });
         return this;
     }
 
-    public ITweenSequenceAdd<TIn, TOut> Add(System.Drawing.Point value)
+    public ITweenSequence2DFor<TIn, TOut> Add(System.Drawing.Point value)
     {
         Values.Add(new TIn[] { (TIn)(object)value.X, (TIn)(object)value.Y });
         return this;
     }
 
-    public ITweenSequenceAdd<TIn, TOut> Add(Microsoft.Xna.Framework.Point value)
+    public ITweenSequence2DFor<TIn, TOut> Add(Microsoft.Xna.Framework.Point value)
     {
         Values.Add(new TIn[] { (TIn)(object)value.X, (TIn)(object)value.Y });
         return this;
     }
 
-    public ITweenSequenceAdd<TIn, TOut> Add(PointF value)
+    public ITweenSequence2DFor<TIn, TOut> Add(PointF value)
     {
         Values.Add(new TIn[] { (TIn)(object)value.X, (TIn)(object)value.Y });
         return this;
     }
 
-    public ITweenSequenceAdd<TIn, TOut> Add(Point3D<TIn> value)
-    {
-        Values.Add(new TIn[] { value.X, value.Y, value.Z });
-        return this;
-    }
-
-    ITweenSequenceFor<TIn, TOut> ITweenSequenceAdd<TIn, TOut>.Add(TIn value)
-    {
-        Values.Add(new TIn[] { value });
-        return this;
-    }
-
-    ITweenSequenceFor<TIn, TOut> ITweenSequenceAdd<TIn, TOut>.Add(Point2D<TIn> value)
-    {
-        Values.Add(new TIn[] { value.X, value.Y });
-        return this;
-    }
-
-    ITweenSequenceFor<TIn, TOut> ITweenSequenceAdd<TIn, TOut>.Add(System.Drawing.Point value)
-    {
-        Values.Add(new TIn[] { (TIn)(object)value.X, (TIn)(object)value.Y });
-        return this;
-    }
-
-    ITweenSequenceFor<TIn, TOut> ITweenSequenceAdd<TIn, TOut>.Add(Microsoft.Xna.Framework.Point value)
-    {
-        Values.Add(new TIn[] { (TIn)(object)value.X, (TIn)(object)value.Y });
-        return this;
-    }
-
-    ITweenSequenceFor<TIn, TOut> ITweenSequenceAdd<TIn, TOut>.Add(PointF value)
-    {
-        Values.Add(new TIn[] { (TIn)(object)value.X, (TIn)(object)value.Y });
-        return this;
-    }
-
-    ITweenSequenceFor<TIn, TOut> ITweenSequenceAdd<TIn, TOut>.Add(Point3D<TIn> value)
-    {
-        Values.Add(new TIn[] { value.X, value.Y, value.Z });
-        return this;
-    }
-
-    ITweenSequenceFor<TIn, TOut> ITweenSequenceFor<TIn, TOut>.Add(TIn value)
-    {
-        Values.Add(new TIn[] { value });
-        return this;
-    }
-
-    ITweenSequenceFor<TIn, TOut> ITweenSequenceFor<TIn, TOut>.Add(Point2D<TIn> value)
-    {
-        Values.Add(new TIn[] { value.X, value.Y });
-        return this;
-    }
-
-    ITweenSequenceFor<TIn, TOut> ITweenSequenceFor<TIn, TOut>.Add(System.Drawing.Point value)
-    {
-        Values.Add(new TIn[] { (TIn)(object)value.X, (TIn)(object)value.Y });
-        return this;
-    }
-
-    ITweenSequenceFor<TIn, TOut> ITweenSequenceFor<TIn, TOut>.Add(Microsoft.Xna.Framework.Point value)
-    {
-        Values.Add(new TIn[] { (TIn)(object)value.X, (TIn)(object)value.Y });
-        return this;
-    }
-
-    ITweenSequenceFor<TIn, TOut> ITweenSequenceFor<TIn, TOut>.Add(PointF value)
-    {
-        Values.Add(new TIn[] { (TIn)(object)value.X, (TIn)(object)value.Y });
-        return this;
-    }
-
-    ITweenSequenceFor<TIn, TOut> ITweenSequenceFor<TIn, TOut>.Add(Point3D<TIn> value)
+    public ITweenSequence3DFor<TIn, TOut> Add(Point3D<TIn> value)
     {
         Values.Add(new TIn[] { value.X, value.Y, value.Z });
         return this;
