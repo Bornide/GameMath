@@ -12,54 +12,24 @@ abstract class TweenBase<TIn, TOut> : ITween<TIn, TOut>,
     IBuild<TIn, TOut>
 {
     public event ITween<TIn, TOut>.TweenEvent? AnimationEnded;
-    public double CurrentDuration { get; protected set; }
-    public double TotalDuration { get; protected set; }
-    public TIn[] StartValues { get; protected set; }
-    public TIn[] EndValues { get; protected set; }
     public Interpolation<TIn, TOut> Interpolation;
 
     protected bool IsBuilded = false;
     protected bool IsStarted = false;
     protected bool InvokeEvent = true;
 
-    public void Start()
-    {
-        IsStarted = true;
-    }
-
-    public virtual void Reset()
-    {
-        InvokeEvent = true;
-        CurrentDuration = 0;
-    }
-
-    public void Restart()
+    public ITween<TIn, TOut> Restart()
     {
         Reset();
         Start();
+        return this;
     }
 
-    public virtual void Reverse()
-    {
-        TIn[] bufferValue = StartValues;
-        StartValues = EndValues;
-        EndValues = bufferValue;
-    }
-
-    public void Pause()
-    {
-        IsStarted = false;
-    }
-
-    public void Stop()
+    public ITween<TIn, TOut> Stop()
     {
         Reset();
         IsStarted = false;
-    }
-
-    public void ToggleState()
-    {
-        IsStarted = !IsStarted;
+        return this;
     }
 
     public ILoop<TIn, TOut> Linear()
@@ -177,27 +147,13 @@ abstract class TweenBase<TIn, TOut> : ITween<TIn, TOut>,
         return this;
     }
 
-    public virtual ITween<TIn, TOut> Build()
-    {
-        CurrentDuration = 0;
-        return this;
-    }
-
+    public abstract ITween<TIn, TOut> Build();
+    public abstract ITween<TIn, TOut> Start();
+    public abstract ITween<TIn, TOut> Reset();
+    public abstract ITween<TIn, TOut> Reverse();
+    public abstract ITween<TIn, TOut> Pause();
+    public abstract ITween<TIn, TOut> ToggleState();
     public abstract TOut Update(double currentTime);
-
-    protected double UpdateTime(double currentTime, bool triggerAnimationEnded = true)
-    {
-        if (!IsStarted) return CurrentDuration;
-        CurrentDuration += currentTime;
-        if (CurrentDuration <= TotalDuration) return CurrentDuration;
-
-        //Animation ended
-        IsStarted = false;
-        CurrentDuration = TotalDuration;
-
-        if (triggerAnimationEnded) OnAnimationEnded();
-        return CurrentDuration;
-    }
 
     protected void OnAnimationEnded()
     {

@@ -1,4 +1,4 @@
-﻿using GameMath.Tweening.Tweens;
+﻿using GameMath.Tweening.Tweens.Simple;
 
 namespace GameMath.Tweening.Interpolations;
 
@@ -6,5 +6,5 @@ abstract class Interpolation<TIn, TOut>
 {
     protected decimal[]? ResultBuffer;
 
-    public abstract decimal[] Interpolate(TweenBase<TIn, TOut> tween, double currentDuration);
+    public abstract decimal[] Interpolate(TweenSimple<TIn, TOut> tween, double currentDuration);
 }

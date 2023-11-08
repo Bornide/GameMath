@@ -17,11 +17,42 @@ abstract class TweenSimple<TIn, TOut> : TweenBase<TIn, TOut>,
     ITo3D<TIn, TOut>,
     IToArray<TIn, TOut>
 {
-    public override void Reverse()
+    public double CurrentDuration { get; protected set; }
+    public double TotalDuration { get; protected set; }
+    public TIn[] StartValues { get; protected set; }
+    public TIn[] EndValues { get; protected set; }
+
+    public override ITween<TIn, TOut> Start()
+    {
+        IsStarted = true;
+        return this;
+    }
+
+    public override ITween<TIn, TOut> Reset()
+    {
+        InvokeEvent = true;
+        CurrentDuration = 0;
+        return this;
+    }
+
+    public override ITween<TIn, TOut> Reverse()
     {
         TIn[] bufferValue = StartValues;
         StartValues = EndValues;
         EndValues = bufferValue;
+        return this;
+    }
+
+    public override ITween<TIn, TOut> Pause()
+    {
+        IsStarted = false;
+        return this;
+    }
+
+    public override ITween<TIn, TOut> ToggleState()
+    {
+        IsStarted = !IsStarted;
+        return this;
     }
 
     public ITo<TIn, TOut> From(TIn startValue)
@@ -148,5 +179,26 @@ abstract class TweenSimple<TIn, TOut> : TweenBase<TIn, TOut>,
     {
         TotalDuration = duration;
         return this;
+    }
+
+    public override ITween<TIn, TOut> Build()
+    {
+        CurrentDuration = 0;
+        IsBuilded = true;
+        return this;
+    }
+
+    protected double UpdateTime(double currentTime, bool triggerAnimationEnded = true)
+    {
+        if (!IsStarted) return CurrentDuration;
+        CurrentDuration += currentTime;
+        if (CurrentDuration <= TotalDuration) return CurrentDuration;
+
+        //Animation ended
+        IsStarted = false;
+        CurrentDuration = TotalDuration;
+
+        if (triggerAnimationEnded) OnAnimationEnded();
+        return CurrentDuration;
     }
 }

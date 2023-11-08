@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameMath.Core.Geometry;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +9,5 @@ namespace GameMath.Tweening.Tweens.Sequence;
 
 class TweenArray<TIn> : TweenSequence<TIn, decimal[]>
 {
-    protected override decimal[] Interpolate(double currentTime)
-    {
-        return Interpolation.Interpolate(this, CurrentDuration);
-    }
+    protected override Simple.TweenSimple<TIn, decimal[]> CreateInstance() => new Simple.TweenArray<TIn>();
 }

@@ -19,69 +19,88 @@ abstract class TweenSequence<TIn, TOut> : TweenBase<TIn, TOut>,
 {
     protected int CurrentStepIndex;
     protected double[] TotalDurations { get; private set; }
-    protected List<TIn[]> Values { get; private set; } = new List<TIn[]>();
-    protected List<ITween<TIn, TOut>> Tweens { get; set; } = new List<ITween<TIn, TOut>>();
 
-    public override void Reverse()
+    private List<ITween<TIn, TOut>> _tweens { get; set; } = new List<ITween<TIn, TOut>>();
+    private List<TIn[]> _values { get; set; } = new List<TIn[]>();
+    private ITween<TIn, TOut> CurrentTween => _tweens[CurrentStepIndex];
+    private bool OnLastStep => CurrentStepIndex == _tweens.Count - 1;
+
+    public override ITween<TIn, TOut> Start()
     {
-        List<TIn[]> newValues = new List<TIn[]>();
-        for (int i = Values.Count - 1; i >= 0; i--) newValues.Add(Values[i]);
-        Values = newValues;
-
-        double[] newDurations = new double[TotalDurations.Length];
-        for (int i = 0; i < TotalDurations.Length; i++) newDurations[i] = TotalDurations[TotalDurations.Length - i - 1];
-        TotalDurations = newDurations;
-
-        TotalDuration = TotalDurations[0];
-        StartValues = Values[0];
-        EndValues = Values[1];
+        IsStarted = true;
+        CurrentTween.Start();
+        return this;
     }
 
-    public override void Reset()
+    public override ITween<TIn, TOut> Reset()
     {
+        InvokeEvent = true;
         CurrentStepIndex = 0;
-        base.Reset();
+        _tweens.ForEach(t => t.Reset());
+        return this;
+    }
+
+    public override ITween<TIn, TOut> Reverse()
+    {
+        var newTweens = new List<ITween<TIn, TOut>>();
+        for (int i = _tweens.Count - 1; i >= 0; i--) newTweens.Add(_tweens[i].Reverse());
+        _tweens = newTweens;
+        return this;
+    }
+
+    public override ITween<TIn, TOut> Pause()
+    {
+        IsStarted = false;
+        CurrentTween.Pause();
+        return this;
+    }
+
+    public override ITween<TIn, TOut> ToggleState()
+    {
+        IsStarted = !IsStarted;
+        CurrentTween.ToggleState();
+        return this;
     }
 
     public ITweenSequenceFor<TIn, TOut> Add(TIn value)
     {
-        Values.Add(new TIn[]{ value });
+        _values.Add(new TIn[]{ value });
         return this;
     }
 
     public ITweenSequence2DFor<TIn, TOut> Add(Point2D<TIn> value)
     {
-        Values.Add(new TIn[] { value.X, value.Y });
+        _values.Add(new TIn[] { value.X, value.Y });
         return this;
     }
 
     public ITweenSequence2DFor<TIn, TOut> Add(System.Drawing.Point value)
     {
-        Values.Add(new TIn[] { (TIn)(object)value.X, (TIn)(object)value.Y });
+        _values.Add(new TIn[] { (TIn)(object)value.X, (TIn)(object)value.Y });
         return this;
     }
 
     public ITweenSequence2DFor<TIn, TOut> Add(Microsoft.Xna.Framework.Point value)
     {
-        Values.Add(new TIn[] { (TIn)(object)value.X, (TIn)(object)value.Y });
+        _values.Add(new TIn[] { (TIn)(object)value.X, (TIn)(object)value.Y });
         return this;
     }
 
     public ITweenSequence2DFor<TIn, TOut> Add(PointF value)
     {
-        Values.Add(new TIn[] { (TIn)(object)value.X, (TIn)(object)value.Y });
+        _values.Add(new TIn[] { (TIn)(object)value.X, (TIn)(object)value.Y });
         return this;
     }
 
     public ITweenSequence3DFor<TIn, TOut> Add(Point3D<TIn> value)
     {
-        Values.Add(new TIn[] { value.X, value.Y, value.Z });
+        _values.Add(new TIn[] { value.X, value.Y, value.Z });
         return this;
     }
 
     public IForSequence<TIn, TOut> AddRange(ICollection<TIn> values)
     {
-        Values.Add(values.ToArray());
+        _values.Add(values.ToArray());
         return this;
     }
 
@@ -117,14 +136,14 @@ abstract class TweenSequence<TIn, TOut> : TweenBase<TIn, TOut>,
 
     public IInterpolation<TIn, TOut> For(double duration)
     {
-        TotalDurations = new double[Values.Count];
-        for (int i = 0; i < Values.Count; i++) TotalDurations[i] = duration;
+        TotalDurations = new double[_values.Count];
+        for (int i = 0; i < _values.Count; i++) TotalDurations[i] = duration;
         return this;
     }
 
     public IInterpolation<TIn, TOut> For(params double[] durations)
     {
-        if (Values.Count - 1 != durations.Length)
+        if (_values.Count - 1 != durations.Length)
             throw new ArgumentException("The number of durations doesn't match the number of sequences (3 values = 2 sequences)");
         TotalDurations = durations.ToArray();
         return this;
@@ -135,31 +154,38 @@ abstract class TweenSequence<TIn, TOut> : TweenBase<TIn, TOut>,
         return For(durations.ToArray());
     }
 
-    public override TOut Update(double currentTime)
+    public override ITween<TIn, TOut> Build()
     {
-        if (!IsStarted && CurrentDuration < TotalDuration) return Interpolate(CurrentDuration);
-
-        if (CurrentDuration >= TotalDuration)
+        if (_values.Count < 2)
+            throw new ArgumentException("Not enough values for the tween sequence");
+        
+        for (int i = 0; i < _values.Count - 1; i++)
         {
-            if (CurrentStepIndex < Values.Count - 2)
+            var tween = this.CreateInstance();
+            tween.From(_values[i]);
+            tween.To(_values[i+1]);
+            tween.For(TotalDurations[i]);
+            tween.Interpolation = this.Interpolation;
+            tween.AnimationEnded += (t) =>
             {
-                IsStarted = true;
-                CurrentDuration = 0;
-                CurrentStepIndex++;
-            }
-            else
-            {
-                OnAnimationEnded();
-                return Interpolate(CurrentDuration);
-            }
+                if (OnLastStep) this.OnAnimationEnded();
+                else
+                {
+                    CurrentStepIndex++;
+                    CurrentTween.Start();
+                }
+            };
+            _tweens.Add(tween);
         }
+        IsBuilded = true;
 
-        TotalDuration = TotalDurations[CurrentStepIndex];
-        StartValues = Values[CurrentStepIndex];
-        EndValues = Values[CurrentStepIndex + 1];
-        var duration = UpdateTime(currentTime, false);
-        return Interpolate(duration);
+        return this;
     }
 
-    protected abstract TOut Interpolate(double currentTime);
+    public override TOut Update(double currentTime)
+    {
+        return CurrentTween.Update(currentTime);
+    }
+
+    protected abstract TweenSimple<TIn, TOut> CreateInstance();
 }

@@ -10,9 +10,5 @@ namespace GameMath.Tweening.Tweens.Sequence;
 
 class Tween3D<TIn> : TweenSequence<TIn, Point3D<decimal>>
 {
-    protected override Point3D<decimal> Interpolate(double currentTime)
-    {
-        var result = Interpolation.Interpolate(this, CurrentDuration);
-        return new Point3D<decimal>() { X = Convert.ToDecimal(result[0]), Y = Convert.ToDecimal(result[1]), Z = Convert.ToDecimal(result[2]) };
-    }
+    protected override Simple.TweenSimple<TIn, Point3D<decimal>> CreateInstance() => new Simple.Tween3D<TIn>();
 }

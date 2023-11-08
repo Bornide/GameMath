@@ -13,7 +13,7 @@ namespace GameMath.Tweening
         /// <summary>
         /// Start the tween from current time elapsed
         /// </summary>
-        void Start();
+        ITween<TIn, TOut> Start();
         /// <summary>
         /// Update tween step and returns current value
         /// </summary>
@@ -21,26 +21,26 @@ namespace GameMath.Tweening
         /// <summary>
         /// Reset time elapsed
         /// </summary>
-        void Reset();
+        ITween<TIn, TOut> Reset();
         /// <summary>
         /// Reset time elapsed then start the tween
         /// </summary>
-        void Restart();
+        ITween<TIn, TOut> Restart();
         /// <summary>
         /// Swap endValues and startvalues
         /// </summary>
-        void Reverse();
+        ITween<TIn, TOut> Reverse();
         /// <summary>
         /// Pause the tween (doesn't reset time elapsed)
         /// </summary>
-        void Pause();
+        ITween<TIn, TOut> Pause();
         /// <summary>
         /// Stop the tween (reset time elapsed)
         /// </summary>
-        void Stop();
+        ITween<TIn, TOut> Stop();
         /// <summary>
         /// Toggle the start/stop state of the tween
         /// </summary>
-        void ToggleState();
+        ITween<TIn, TOut> ToggleState();
     }
 }
