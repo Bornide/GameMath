@@ -23,6 +23,10 @@ namespace GameMath.Tweening
         /// </summary>
         ITween<TIn, TOut> Reset();
         /// <summary>
+        /// Change tween's speed by multiplying duration by ratio
+        /// </summary>
+        ITween<TIn, TOut> ChangeSpeed(double ratio);
+        /// <summary>
         /// Reset time elapsed then start the tween
         /// </summary>
         ITween<TIn, TOut> Restart();

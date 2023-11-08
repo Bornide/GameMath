@@ -150,6 +150,7 @@ abstract class TweenBase<TIn, TOut> : ITween<TIn, TOut>,
     public abstract ITween<TIn, TOut> Build();
     public abstract ITween<TIn, TOut> Start();
     public abstract ITween<TIn, TOut> Reset();
+    public abstract ITween<TIn, TOut> ChangeSpeed(double ratio);
     public abstract ITween<TIn, TOut> Reverse();
     public abstract ITween<TIn, TOut> Pause();
     public abstract ITween<TIn, TOut> ToggleState();

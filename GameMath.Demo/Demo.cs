@@ -27,7 +27,7 @@ namespace GameMath.Demo
             IsMouseVisible = true;
 
             _elasticTween = TweenBuilder.From(100).To(600).For(2000f).Elastic().EaseOut().Build();
-            _bounceTween = TweenBuilder.From(100f).To(600f).For(2000f).Bounce().EaseOut().LoopAlternate(500).Build();
+            _bounceTween = TweenBuilder.From(100f).To(600f).For(2000f).Bounce().EaseOut().LoopAlternate().Build();
             _backTween = TweenBuilder.AddRange(new List<Point2D<int>>()
             {
                 new Point2D<int> { X = 100, Y = 250 },
@@ -86,8 +86,8 @@ namespace GameMath.Demo
         {
             GraphicsDevice.Clear(new Color(20, 20, 20));
             _spriteBatch.Begin();
-            //_spriteBatch.Draw(_rectangle, new Rectangle(_elasticX, 50, 50, 50), Color.White);
-            //_spriteBatch.Draw(_rectangle, new Rectangle(_bounceX, 200, 50, 50), Color.White);
+            _spriteBatch.Draw(_rectangle, new Rectangle(_elasticX, 50, 50, 50), Color.White);
+            _spriteBatch.Draw(_rectangle, new Rectangle(_bounceX, 200, 50, 50), Color.White);
             _spriteBatch.Draw(_rectangle, new Rectangle(_backPoint.X-25, _backPoint.Y-25, 50, 50), Color.White);
             _spriteBatch.End();
             base.Draw(gameTime);

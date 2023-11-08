@@ -35,6 +35,13 @@ abstract class TweenSimple<TIn, TOut> : TweenBase<TIn, TOut>,
         return this;
     }
 
+    public override ITween<TIn, TOut> ChangeSpeed(double ratio)
+    {
+        if (ratio <= 0) throw new ArgumentException("Ratio must be > 0");
+        TotalDuration *= ratio;
+        return this;
+    }
+
     public override ITween<TIn, TOut> Reverse()
     {
         TIn[] bufferValue = StartValues;
@@ -177,6 +184,7 @@ abstract class TweenSimple<TIn, TOut> : TweenBase<TIn, TOut>,
 
     public IInterpolation<TIn, TOut> For(double duration)
     {
+        if (duration <= 0) throw new ArgumentException("Duration must be > 0");
         TotalDuration = duration;
         return this;
     }
